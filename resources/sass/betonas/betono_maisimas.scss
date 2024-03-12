@@ -19,6 +19,14 @@ table, th, td {
     border-right: 1px dashed #000;
     border-bottom: 1px solid #000;
 }
+.pagaminti_kubeliai th:first-child,
+.pagaminti_kubeliai td:first-child {
+    // border-left: 1px solid #000;
+}
+.pagaminti_kubeliai th:last-child,
+.pagaminti_kubeliai td:last-child {
+    // border-right: 1px solid #000;
+}
 
 // .naujas_maisimas table,
 // .naujas_maisimas th,
@@ -26,18 +34,31 @@ table, th, td {
 //     width: 8rem;
 // }
 
-.maisimo_duonbaze table,
+// .maisimo_duonbaze table,
 .maisimo_duonbaze th,
 .maisimo_duonbaze td {
     width: min-content;
 }
-.maisimo_duonbaze th {
+.maisimo_duonbaze th:last-child,
+.maisimo_duonbaze td:last-child {
+    width: 11.5rem;
+}
+.maisimo_duonbaze th,
+.maisimo_duonbaze td {
     border-top: 1px solid #000;
     border-left: 1px dashed #000;
     border-right: 1px dashed #000;
     border-bottom: 1px solid #000;
 }
+.maisimo_duonbaze th:first-child,
+.maisimo_duonbaze td:first-child {
+    border-left: 1px solid #000;
+}
+.maisimo_duonbaze th:last-child,
+.maisimo_duonbaze td:last-child {
+    border-right: 1px solid #000;
+}
 
-.maisimo_duonbaze tr:hover {
+.maisimo_duonbaze tbody tr:hover {
     background-color: #0b05;
 }

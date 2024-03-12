@@ -134,7 +134,7 @@
             'type' => 'text',
         ],
         [
-            'label' => 'C30/35',
+            'label' => 'C30/37',
             'type' => 'text',
         ],
         [
@@ -229,7 +229,6 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="card-body"></div>
             </div>
         </div>
 
