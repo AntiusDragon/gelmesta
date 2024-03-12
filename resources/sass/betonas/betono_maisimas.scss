@@ -1,0 +1,43 @@
+table {
+    width: 100%;
+}
+table, th, td {
+    border-collapse: collapse;
+    font-size: 1rem;
+    padding: 0.2rem 0.4rem;
+    text-align: left;
+}
+
+.pagaminti_kubeliai table,
+.pagaminti_kubeliai th,
+.pagaminti_kubeliai td {
+    width: min-content;
+}
+.pagaminti_kubeliai th {
+    border-top: 1px solid #000;
+    border-left: 1px dashed #000;
+    border-right: 1px dashed #000;
+    border-bottom: 1px solid #000;
+}
+
+// .naujas_maisimas table,
+// .naujas_maisimas th,
+// .naujas_maisimas td {
+//     width: 8rem;
+// }
+
+.maisimo_duonbaze table,
+.maisimo_duonbaze th,
+.maisimo_duonbaze td {
+    width: min-content;
+}
+.maisimo_duonbaze th {
+    border-top: 1px solid #000;
+    border-left: 1px dashed #000;
+    border-right: 1px dashed #000;
+    border-bottom: 1px solid #000;
+}
+
+.maisimo_duonbaze tr:hover {
+    background-color: #0b05;
+}

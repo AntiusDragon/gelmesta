@@ -1,0 +1,18 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+// Betonas
+@import 'betonas/betono_maisimas';
+
+.logotipas {
+    height: 3rem;
+    width: 8rem;
+    background-size: cover;
+    background-image: url(../../../public/img/logoGelmestaCrismis.png);
+}
