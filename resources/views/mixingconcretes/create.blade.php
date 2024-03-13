@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<?php
+@php
     $createMixingConcretesFormos1 = [
         // [
         //     'label' => 'Delete',
@@ -182,7 +182,7 @@
             'label' => 'XF4',
         ],
 ];
-?>
+@endphp
 <div class="container">
     <div class="row justify-content-center">
 
@@ -192,33 +192,94 @@
                 <table>
                     <thead>
                             <tr>
+                                @php
+                                    // Filtruojame duomenis pagal metus ir savaites
+                                    $filteredData = [];
+                                    $maxYear = 0;
+                                    $maxWeek = 0;
+                                    foreach ($mixingconcretes as $mixingconcrete) {
+                                        $created_at = \Carbon\Carbon::parse($mixingconcrete->created_at);
+                                        $year = $created_at->year;
+                                        $week = $created_at->weekOfYear;
+                                
+                                        $maxYear = max($maxYear, $year);
+                                        $maxWeek = max($maxWeek, $week);
+                                
+                                        $key = $year . '-' . $week;
+                                
+                                        if (!isset($filteredData[$key])) {
+                                            $filteredData[$key] = [];
+                                        }
+                                
+                                        $filteredData[$key][] = $mixingconcrete;
+                                    }
+                                
+                                    // Nustatome naujausius metus ir savaitės numerius
+                                    $currentYear = $maxYear;
+                                    $currentWeek = $maxWeek;
+                                @endphp
+                                
                                 @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
-                                <th class="form-group mb-3">
-                                    {{ $kubeliuMerkeForma1['label'] }}
-                                </th>
+                                    @php
+                                        $background_color = '#fff';
+                                
+                                        // Ieškome duomenų tik iš naujausio metų ir savaitės
+                                        foreach ($filteredData as $yearWeek => $weekData) {
+                                            [$year, $week] = explode('-', $yearWeek);
+                                
+                                            if ($year == $currentYear && $week == $currentWeek) {
+                                                foreach ($weekData as $mixingconcrete) {
+                                                    if ($mixingconcrete->marke === $kubeliuMerkeForma1['label']) {
+                                                        $background_color = 'red';
+                                
+                                                        foreach ($weekData as $mixingconcrete) {
+                                                            if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && $mixingconcrete->pagaminti_kubeliai > 0) {
+                                                                $background_color = 'green';
+                                                            }
+                                                        }
+                                
+                                                        break 2; // Nutraukti dvigubą ciklą, nes surastas rezultatas
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    @endphp
+                                    <th class="form-group mb-3" style="background-color: {{ $background_color }}">
+                                        {{ $kubeliuMerkeForma1['label'] }}
+                                    </th>
                                 @endforeach
                             </tr>
-                            <tr>
-                                @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
-                                <th class="form-group mb-3">
-                                    {{ $kubeliuMerkeForma1['label'] }}
-                                </th>
-                                @endforeach
-                            </tr>
-                            <tr>
-                                @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
-                                <th class="form-group mb-3">
-                                    {{ $kubeliuMerkeForma1['label'] }}
-                                </th>
-                                @endforeach
-                            </tr>
-                            <tr>
-                                @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
-                                <th class="form-group mb-3">
-                                    {{ $kubeliuMerkeForma1['label'] }}
-                                </th>
-                                @endforeach
-                            </tr>
+                            
+                            <!-- Pirmas grupavimas -->
+                            {{-- @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
+                            <th class="form-group mb-3" 
+                                style="{{ ($createMixingConcretesForma1['label'] == 'uzsakymo_nr' 
+                                    && substr($kubeliuMerkeForma1['label'], 0, 1) == 'G') 
+                                    ? 'background-color: red;' : '' }}">
+                                {{ $kubeliuMerkeForma1['label'] }}
+                            </th>
+                            @endforeach --}}
+
+                            {{-- <!-- Antras grupavimas -->
+                            @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
+                            <th class="form-group mb-3" style="{{ ($createMixingConcretesForma1['label'] == 'uzsakymo_nr' && substr($kubeliuMerkeForma1['label'], 0, 1) == 'G' && !empty($createMixingConcretesForma1['salcio_priedai'])) ? 'background-color: red;' : '' }}">
+                                {{ $kubeliuMerkeForma1['label'] }}
+                            </th>
+                            @endforeach
+
+                            <!-- Trečias grupavimas -->
+                            @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
+                            <th class="form-group mb-3" style="{{ ($createMixingConcretesForma1['label'] == 'uzsakymo_nr' && substr($kubeliuMerkeForma1['label'], 0, 1) != 'G' && !empty($createMixingConcretesForma1['uzsakymo_nr'])) ? 'background-color: red;' : '' }}">
+                                {{ $kubeliuMerkeForma1['label'] }}
+                            </th>
+                            @endforeach
+
+                            <!-- Ketvirtas grupavimas -->
+                            @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
+                            <th class="form-group mb-3" style="{{ ($createMixingConcretesForma1['label'] == 'uzsakymo_nr' && substr($kubeliuMerkeForma1['label'], 0, 1) != 'G' && !empty($createMixingConcretesForma1['uzsakymo_nr']) && !empty($createMixingConcretesForma1['pagaminti_kubeliai'])) ? 'background-color: red;' : '' }}">
+                                {{ $kubeliuMerkeForma1['label'] }}
+                            </th>
+                            @endforeach --}}
                     </thead>
 
                     <tbody>
