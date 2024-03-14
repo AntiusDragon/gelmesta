@@ -253,7 +253,7 @@ $currentWeek = $maxWeek;
                                                         $background_color = 'red';
                                 
                                                         foreach ($weekData as $mixingconcrete) {
-                                                            if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && $mixingconcrete->pagaminti_kubeliai > 0) {
+                                                            if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match($pagamintiKubelis['bukle'], $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai !== null && $mixingconcrete->pagaminti_kubeliai > 0) {
                                                                 $background_color = '#0F0';
                                                             }
                                                         }
@@ -286,7 +286,7 @@ $currentWeek = $maxWeek;
                                                         $background_color = 'red';
                                 
                                                         foreach ($weekData as $mixingconcrete) {
-                                                            if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && $mixingconcrete->pagaminti_kubeliai > 0) {
+                                                            if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match('/^G/', $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai !== null && $mixingconcrete->pagaminti_kubeliai > 0) {
                                                                 $background_color = '#0F0';
                                                             }
                                                         }
@@ -318,7 +318,7 @@ $currentWeek = $maxWeek;
                                                         $background_color = 'red';
                                 
                                                         foreach ($weekData as $mixingconcrete) {
-                                                            if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && $mixingconcrete->pagaminti_kubeliai > 0) {
+                                                            if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match('/^P/', $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai !== null && $mixingconcrete->pagaminti_kubeliai > 0) {
                                                                 $background_color = '#0F0';
                                                             }
                                                         }
@@ -349,7 +349,7 @@ $currentWeek = $maxWeek;
                                                         $background_color = 'red';
                                 
                                                         foreach ($weekData as $mixingconcrete) {
-                                                            if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && $mixingconcrete->pagaminti_kubeliai > 0) {
+                                                            if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match('/^G/', $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai == null && $mixingconcrete->pagaminti_kubeliai > 0) {
                                                                 $background_color = '#0F0';
                                                             }
                                                         }
@@ -381,7 +381,7 @@ $currentWeek = $maxWeek;
                                                         $background_color = 'red';
                                 
                                                         foreach ($weekData as $mixingconcrete) {
-                                                            if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && $mixingconcrete->pagaminti_kubeliai > 0) {
+                                                            if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match('/^P/', $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai == null && $mixingconcrete->pagaminti_kubeliai > 0) {
                                                                 $background_color = '#0F0';
                                                             }
                                                         }
