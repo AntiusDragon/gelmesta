@@ -21,7 +21,11 @@ class LabConcreteController extends Controller
      */
     public function create()
     {
-        //
+        // $labconcretes = LabConcrete::all();
+        // return view('labconcretes.create', [
+        //     'labconcretes' => $labconcretes,
+        // ]);
+        // return view('labconcretes.create');
     }
 
     /**

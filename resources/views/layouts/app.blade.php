@@ -38,7 +38,7 @@
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbar2Dropdown">
                                 <a class="dropdown-item" href="{{route('mixingconcretes-index')}}">Betono</a>
                                 <a class="dropdown-item" href="{{route('mixingconcretes-create')}}">Betono maišymas</a>
-                                {{-- <a class="dropdown-item" href="{{route('labconcretes-index')}}">Betono laboratorija</a> --}}
+                                <a class="dropdown-item" href="{{route('labconcretes-create')}}">Betono laboratorija</a>
                                 {{-- <a class="dropdown-item" href="{{route('labconcretes-create')}}">Betono maišymo tikrinimas</a> --}}
                                 {{-- <a class="dropdown-item" href="{{route('labconcretes-create')}}">Betono itraukto oro kiekis %</a> --}}
                             </div>

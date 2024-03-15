@@ -31,6 +31,18 @@ Route::prefix('mixingconcretes')->name('mixingconcretes-')->group(function () {
     Route::delete('/{mixingconcrete}', [BetonoMaisimas::class, 'destroy'])->name('destroy');
 });
 
+// BetonoLasbaratorija CRUD Group Blade
+Route::prefix('labconcretes')->name('labconcretes-')->group(function () {
+    Route::get('/', [BetonoLab::class, 'index'])->name('index');
+    Route::get('/create', [BetonoLab::class, 'create'])->name('create');
+    Route::post('/create', [BetonoLab::class, 'store'])->name('store');
+    Route::get('/{labconcrete}', [BetonoLab::class, 'show'])->name('show');
+    Route::get('/{labconcrete}/edit', [BetonoLab::class, 'edit'])->name('edit');
+    Route::put('/{labconcrete}', [BetonoLab::class, 'update'])->name('update');
+    Route::get('/{labconcrete}/delete', [BetonoLab::class, 'delete'])->name('delete');
+    Route::delete('/{labconcrete}', [BetonoLab::class, 'destroy'])->name('destroy');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

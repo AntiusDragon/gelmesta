@@ -124,47 +124,34 @@
         <div class="row justify-content-center maisimo_duonbaze">
             <div class="col-md-12">
                 <div class="card" style="background-color: #fffd">
-                    <div class="card-header">Maišymo duomenis</div>
+                    <div class="card-header">Ar tikrai nori ištrinti?</div>
     
                     <div class="card-body">
-                        <div>
-                            <a href="{{ route('mixingconcretes-create') }}" class="btn btn-success">Pridėti nauja maišyma</a>
-                        </div>
+                        <form action="{{route('mixingconcretes-destroy', $mixingconcrete)}}" method="post">
     
-                        <table>
-                            <thead>
-                                <tr>
-                                    @foreach ($createMixingConcretesFormos1 as $createMixingConcretesForma1)
-                                    <th>{{ $createMixingConcretesForma1['label'] }}</th>
-                                    @endforeach
-                                    <th>Veiksmai</th>
-                                </tr>
-                            </thead>
-        
-                            <tbody>
-                                @forelse ($mixingconcretes as $mixingconcrete)
-                                @if ($mixingconcrete->delete == '0')
-                                <tr>
-                                    @foreach ($createMixingConcretesFormos1 as $createMixingConcretesForma1)
-                                    <td>{{ $mixingconcrete->{ $createMixingConcretesForma1['name'] } }}</td>
-                                    @endforeach
+                            <table>
+                                <thead>
+                                    <tr>
+                                        @foreach ($createMixingConcretesFormos1 as $createMixingConcretesForma1)
+                                        <th>{{ $createMixingConcretesForma1['label'] }}</th>
+                                        @endforeach
+                                    </tr>
+                                </thead>
+            
+                                <tbody>
+                                    <tr>
+                                        @foreach ($createMixingConcretesFormos1 as $createMixingConcretesForma1)
+                                        <td>{{ $mixingconcrete->{ $createMixingConcretesForma1['name'] } }}</td>
+                                        @endforeach
+                                    </tr>
+                                </tbody>
+                            </table>
     
-                                    <td>
-                                        <a href="{{ route('mixingconcretes-edit', $mixingconcrete)}}" class="btn btn-success m-1">Redaguoti</a>
-                                        {{-- <a href="{{ route('mixingconcretes-delete', $mixingconcrete)}}" class="btn btn-danger m-1">Trinti</a> --}}
-                                        <a href="{{ route('mixingconcretes-show', $mixingconcrete)}}" class="btn btn-secondary m-1">Peržiūrėti</a>
-                                    </td>
-    
-                                </tr>
-                                @endif
-                                @empty
-                                <tr>
-                                    <td colspan="3">Maišimų nėra</td>
-                                </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-    
+                            <button type="submit" class="btn btn-danger m-1">Ištrinti</button>
+                            <a href="{{ route('mixingconcretes-index') }}" class="btn btn-secondary m-1">Atšaukti</a>
+                            @csrf
+                            @method('delete')
+                        </form>
                     </div>
                 </div>
             </div>
@@ -173,4 +160,4 @@
 </div>
 @endsection
 
-@section('title', 'Maišymo duonbaze')
+@section('title', 'Pastvirtinti trinimą')

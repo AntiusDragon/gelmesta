@@ -8,6 +8,12 @@ use App\Http\Requests\UpdateMixingConcreteRequest;
 
 class MixingConcreteController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      */
@@ -44,32 +50,51 @@ class MixingConcreteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(MixingConcrete $mixingConcrete)
+    public function show(MixingConcrete $mixingconcrete)
     {
-        //
+        return view('mixingconcretes.show', [
+            'mixingconcrete' => $mixingconcrete,
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(MixingConcrete $mixingConcrete)
+    public function edit(MixingConcrete $mixingconcrete)
     {
-        //
+        return view('mixingconcretes.edit', [
+            'mixingconcrete' => $mixingconcrete,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMixingConcreteRequest $request, MixingConcrete $mixingConcrete)
+    public function update(UpdateMixingConcreteRequest $request, MixingConcrete $mixingconcrete)
     {
-        //
+        $mixingconcrete->update($request->all());
+
+        return redirect()->route('mixingconcretes-create');
     }
+
+    /**
+     * +Cinfirm remove the specified resource in storage.
+     */
+
+     public function delete(MixingConcrete $mixingconcrete)
+     {
+        return view('mixingconcretes.delete', [
+            'mixingconcrete' => $mixingconcrete,
+        ]);
+     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MixingConcrete $mixingConcrete)
+    public function destroy(MixingConcrete $mixingconcrete)
     {
-        //
+        $mixingconcrete->delete();
+        
+        return redirect()->route('mixingconcretes-create');
     }
 }
