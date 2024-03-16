@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('lab_concretes', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('slankumas_mm', 4, 1)->unsigned()->nullable(false); // pridėtas 'unsigned' ir 'nullable(false)' 
-            $table->tinyInteger('itraukto_oro_kiekis', 2, 1)->unsigned()->nullable(false); // pridėtas 'unsigned' ir 'nullable(false)' 
-            $table->unsignedInteger('plotis_mm', 4, 1)->nullable(false); // pridėtas 'unsigned' ir 'nullable(false)' 
-            $table->unsignedInteger('ilgis_mm', 4, 1)->nullable(false); // pridėtas 'unsigned' ir 'nullable(false)' 
-            $table->unsignedInteger('aukstis_mm', 4, 1)->nullable(false); // pridėtas 'unsigned' ir 'nullable(false)' 
-            $table->unsignedInteger('bandinio_mase_g', 6, 1)->nullable(false); // pridėtas 'unsigned' ir 'nullable(false)' 
-            $table->unsignedInteger('ardancioji_jega_kn', 6, 1)->nullable(false); // pridėtas 'unsigned' ir 'nullable(false)' 
+            $table->decimal('slankumas_mm', 4, 1)->unsigned()->nullable(false); // pridėtas 'unsigned' ir 'nullable(false)' 
+            // $table->decimal('itraukto_oro_kiekis', 2, 1)->unsigned()->nullable(false); // pridėtas 'unsigned' ir 'nullable(false)' 
+            $table->decimal('plotis_mm', 4, 1)->nullable(false); // pridėtas 'unsigned' ir 'nullable(false)' 
+            $table->decimal('ilgis_mm', 4, 1)->nullable(false); // pridėtas 'unsigned' ir 'nullable(false)' 
+            $table->decimal('aukstis_mm', 4, 1)->nullable(false); // pridėtas 'unsigned' ir 'nullable(false)' 
+            $table->decimal('bandinio_mase_g', 6, 1)->nullable(false); // pridėtas 'unsigned' ir 'nullable(false)' 
+            $table->decimal('ardancioji_jega_kn', 6, 1)->nullable(false); // pridėtas 'unsigned' ir 'nullable(false)' 
             $table->unsignedBigInteger('mixing_concrete_id')->nullable();
             $table->foreign('mixing_concrete_id')->references('id')->on('mixing_concretes');
             $table->timestamps();

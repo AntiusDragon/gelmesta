@@ -25,7 +25,7 @@ class MixingConcrete extends Model
         'maisykle',
         'kiekis_m3',
         'uzsakymo_nr',
-        // 'uzsakymo_raide',
+        'uzsakymo_raide',
         'uzsakovas',
         'komentaras',
     ];

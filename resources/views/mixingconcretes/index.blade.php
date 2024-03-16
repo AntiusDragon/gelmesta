@@ -106,18 +106,18 @@
             //     'name' => '	uzsakymo_raide',
             //     'aprasas' => 'Užsakymo indexas',
             // ],
-            [
-                'label' => 'Užsakovas',
-                'type' => 'text',
-                'name' => 'uzsakovas',
-                'aprasas' => 'Klientas',
-            ],
-            [
-                'label' => 'Komentarai',
-                'type' => 'text',
-                'name' => 'komentaras',
-                'aprasas' => 'Papildoma informacija',
-            ],
+            // [
+            //     'label' => 'Užsakovas',
+            //     'type' => 'text',
+            //     'name' => 'uzsakovas',
+            //     'aprasas' => 'Klientas',
+            // ],
+            // [
+            //     'label' => 'Komentarai',
+            //     'type' => 'text',
+            //     'name' => 'komentaras',
+            //     'aprasas' => 'Papildoma informacija',
+            // ],
         ];
     ?>
     <div class="container">
@@ -137,6 +137,9 @@
                                     @foreach ($createMixingConcretesFormos1 as $createMixingConcretesForma1)
                                     <th>{{ $createMixingConcretesForma1['label'] }}</th>
                                     @endforeach
+                                    <th>Bukle</th>
+                                    <th>Užsakovas</th>
+                                    <th>Komentaras</th>
                                     <th>Veiksmai</th>
                                 </tr>
                             </thead>
@@ -148,6 +151,9 @@
                                     @foreach ($createMixingConcretesFormos1 as $createMixingConcretesForma1)
                                     <td>{{ $mixingconcrete->{ $createMixingConcretesForma1['name'] } }}</td>
                                     @endforeach
+                                    <td>{{ $mixingconcrete->uzsakymo_raide }}</td>
+                                    <td>{{ $mixingconcrete->uzsakovas }}</td>
+                                    <td>{{ $mixingconcrete->komentaras }}</td>
     
                                     <td>
                                         <a href="{{ route('mixingconcretes-edit', $mixingconcrete)}}" class="btn btn-success m-1">Redaguoti</a>
