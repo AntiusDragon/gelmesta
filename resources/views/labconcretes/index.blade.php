@@ -2,11 +2,17 @@
 
 <div class="fonas_betonas">
     @section('content')
-    @php
+    <?php
     $createMixingConcretesFormos1 = [
+        [
+            'label' => 'Maišymo data',
+            'type' => 'text',
+            'name' => 'created_at',
+            'aprasas' => 'Maišymo data',
+        ],
         // [
         //     'label' => 'Delete',
-        //     'type' => 'hidden',
+        //     'type' => 'text',
         //     'name' => 'delete',
         //     'aprasas' => 'Ištrinimo ligis',
         // ],
@@ -18,25 +24,25 @@
         ],
         // [
         //     'label' => 'Maišykles recepto ID',
-        //     'type' => 'hidden',
+        //     'type' => 'text',
         //     'name' => 'maisikles_recepto_id',
         //     'aprasas' => 'Maišykles recepto ID',
         // ],
         // [
         //     'label' => 'Darbotojo ID maiše',
-        //     'type' => 'hidden',
+        //     'type' => 'text',
         //     'name' => 'user_maise_id',
         //     'aprasas' => 'Kas maiše ID',
         // ],
         // [
         //     'label' => 'Darbotojo ID koregavo',
-        //     'type' => 'hidden',
+        //     'type' => 'text',
         //     'name' => 'user_edit_id',
         //     'aprasas' => 'Kas koregavo ID',
         // ],
         // [
         //     'label' => 'Koregavimo Data',
-        //     'type' => 'datetime-local',
+        //     'type' => 'date',
         //     'name' => 'edit_data',
         //     'aprasas' => 'Koregavimo Data',
         // ],
@@ -71,7 +77,7 @@
             'aprasas' => 'Šalcio priedai',
         ],
         [
-            'label' => 'Pagaminti kubeliai vnt',
+            'label' => 'Pagaminti kubeliai',
             'type' => 'text',
             'name' => 'pagaminti_kubeliai',
             'aprasas' => 'Pagaminti kubelių kiekis',
@@ -113,99 +119,19 @@
         //     'aprasas' => 'Papildoma informacija',
         // ],
     ];
-    $kubeliuMerkeFormos1 = [
-        [
-            'label' => 'C8/10',
-            'type' => 'text',
-        ],
-        [
-            'label' => 'C12/15',
-            'type' => 'text',
-        ],
-        [
-            'label' => 'C16/20',
-            'type' => 'text',
-        ],
-        [
-            'label' => 'C20/25',
-            'type' => 'text',
-        ],
-        [
-            'label' => 'C25/30',
-            'type' => 'text',
-        ],
-        [
-            'label' => 'C30/37',
-            'type' => 'text',
-        ],
-        [
-            'label' => 'C35/45',
-            'type' => 'text',
-        ],
-        [
-            'label' => 'C40/50',
-            'type' => 'text',
-        ],
-        [
-            'label' => 'C45/55',
-            'type' => 'text',
-        ],
-    ];
-    $kubeliuSalcioIndexasForma1 = [
-        [
-            'label' => 'F50',
-        ],
-        [
-            'label' => 'F100',
-        ],
-        [
-            'label' => 'F150',
-        ],
-        [
-            'label' => 'F200',
-        ],
-        [
-            'label' => 'F250',
-        ],
-        [
-            'label' => 'F300',
-        ],
-        [
-            'label' => 'XF1',
-        ],
-        [
-            'label' => 'XF2',
-        ],
-        [
-            'label' => 'XF3',
-        ],
-        [
-            'label' => 'XF4',
-        ],
-    ];
-    $pagamintiKubeliai = [
-        [
-            'label' => 'Gamyba+XF/F',
-            'bukle' => '/^G/',
-            'salcioPredas' => 'null',
-        ],
-        [
-            'label' => 'Pardavimai+XF/F',
-            'bukle' => '/^P/',
-            'salcioPredas' => 'null',
-        ],
-        [
-            'label' => 'Gamyba',
-            'bukle' => '/^G/',
-            'salcioPredas' => 'null',
-        ],
-        [
-            'label' => 'Pardavimai',
-            'bukle' => '/^P/',
-            'salcioPredas' => 'null',
-        ],
-    ];
     $kubeliuBandimoZurnalasi1 = [
+        [
+            'label' => 'Maišymo data',
+            'type' => 'text',
+            'name' => 'created_at',
+            'aprasas' => 'Maišymo data',
+        ],
+        [
+            'label' => 'Maišymo data',
+            'type' => 'text',
+            'name' => 'created_at',
+            'aprasas' => 'Maišymo data',
+        ],
         // [
         //     'label' => 'Delete',
         //     'type' => 'hidden',
@@ -224,18 +150,18 @@
         //     'name' => 'maisikles_recepto_id',
         //     'aprasas' => 'Maišykles recepto ID',
         // ],
-        [
-            'label' => 'Darbotojo ID pilde',
-            'type' => 'hidden',
-            'name' => 'user_maise_id',
-            'aprasas' => 'Kas maiše ID',
-        ],
-        [
-            'label' => 'Darbotojo ID koregavo',
-            'type' => 'hidden',
-            'name' => 'user_edit_id',
-            'aprasas' => 'Kas koregavo ID',
-        ],
+        // [
+        //     'label' => 'Darbotojo ID pilde',
+        //     'type' => 'hidden',
+        //     'name' => 'user_maise_id',
+        //     'aprasas' => 'Kas maiše ID',
+        // ],
+        // [
+        //     'label' => 'Darbotojo ID koregavo',
+        //     'type' => 'hidden',
+        //     'name' => 'user_edit_id',
+        //     'aprasas' => 'Kas koregavo ID',
+        // ],
         [
             'label' => 'Marke',
             'type' => 'text',
@@ -477,161 +403,74 @@
         //     'aprasas' => 'Papildoma informacija',
         // ],
     ]
-    
-    // $filteredData = [];
-    // $maxYear = 0;
-    // $maxWeek = 0;
-    // foreach ($mixingconcretes as $mixingconcrete) {
-    //     $created_at = \Carbon\Carbon::parse($mixingconcrete->created_at);
-    //     $year = $created_at->year;
-    //     $week = $created_at->weekOfYear;
-    
-    //     $maxYear = max($maxYear, $year);
-    //     $maxWeek = max($maxWeek, $week);
-    
-    //     $key = $year . '-' . $week;
-    
-    //     if (!isset($filteredData[$key])) {
-    //         $filteredData[$key] = [];
-    //     }
-    
-    //     $filteredData[$key][] = $mixingconcrete;
-    // }
-    
-    // Nustatome naujausius metus ir savaitės numerius
-    // $currentYear = $maxYear;
-    // $currentWeek = $maxWeek;
-    @endphp
+    ?>
     <div class="
     {{-- container --}}
     ">
-        <div class="row justify-content-center">
     
-            <div class="col-md-12 mb-4 maisimo_duonbaze">
-                <div class="card" style="background-color: #fffd">
-                    <div class="card-header">Betono labaratojija</div>
-    
-                    @forelse ($mixingconcretes as $mixingconcrete)
-                        @if ((preg_match('/^G/', $mixingconcrete->uzsakymo_nr) && $mixingconcrete->pagaminti_kubeliai > 0))
-                            <form action="{{route('labconcretes-store')}}" method="post">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            @foreach ($kubeliuBandimoZurnalasi1 as $kubeliuBandimoZurnalas1)
-                                            <th>{{ $kubeliuBandimoZurnalas1['label'] }}</th>
-                                            @endforeach
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ $mixingconcrete->id }}" placeholder="" name="mixing_concrete_id"></div> --}}
-                                            {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="delete"></div> --}}
-                                            <div class="form-group mb-3"><input type="test" class="form-control" value="{{ Auth::user()->id }}" placeholder="" name="user_maise_id"></div>
-                                            <td>{{ $mixingconcrete->created_at }}</td>
-                                            <td>x</td>
-                                            <td>{{ $mixingconcrete->marke }}</td>
-                                            <td>{{ $mixingconcrete->slankumo_klase }}</td>
-                                            <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Slankumas, mm" name="slankumas_mm"></td>
-                                            <td>{{ $mixingconcrete->salcio_priedai }}</td>
-                                            <td>{{ $mixingconcrete->maisykle }}</td>
-                                            <td>{{ $mixingconcrete->uzsakymo_nr }}</td>
-                                            <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Bandinio plotis, mm" name="plotis_mm"></td>
-                                            <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Bandinio ilgis, mm" name="ilgis_mm"></td>
-                                            <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Bandinio aukštis, mm" name="aukstis_mm"></td>
-                                            <td>x</td>
-                                            <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Bandinio masė, g" name="bandinio_mase_g"></td>
-                                            <td>x</td>
-                                            <td>x</td>
-                                            <td>x</td>
-                                            <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Ardančioji jėga, kN" name="ardancioji_jega_kn"></td>
-                                            <td>x</td>
-                                            <td>x</td>
-                                            <td>x</td>
-                                            <td>x</td>
-                                            <td>x</td>
-                                            <td>x</td>
-                                            <td>x</td>
-                                            <td>x</td>
-                                            <td>x</td>
-                                            <td>x</td>
-                                            <td>x</td>
-                                            <td>x</td>
-                                            <td>x</td>
-                                            <td>x</td>
-                                            <td>x</td>
-                                            <td>x</td>
-                                            <td>x</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                
-                                <button style="width: 90%" type="submit" class="btn btn-outline-primary m-1">Pridėti nauja maišyma</button>
-                                {{-- <a href="{{ route('clients-index')}}" class="btn btn-secondary m-1">Atšaukti</a> --}}
-                                @csrf
-                                {{-- @method('put') --}}
-                                </form>
-                            @endif
-                        @endforeach
-    
-                    </div>
+        <div class="col-md-12 mb-4 maisimo_duonbaze">
+            <div class="card" style="background-color: #fffd">
+                <div class="card-header">Betono labaratojija</div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            @foreach ($kubeliuBandimoZurnalasi1 as $kubeliuBandimoZurnalas1)
+                            <th>{{ $kubeliuBandimoZurnalas1['label'] }}</th>
+                            @endforeach
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($labconcretes as $labconcrete)
+                                <tr>
+                                    {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ $mixingconcrete->id }}" placeholder="" name="mixing_concrete_id"></div> --}}
+                                    {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="delete"></div> --}}
+                                    <td>{{ $labconcrete->user_maise_id }}</td>
+                                    {{-- <td>{{ $labconcrete->mixingconcrete->created_at }}</td> --}}
+                                    <td>x</td>
+                                    {{-- <td>{{ $labconcrete->mixingconcrete->marke }}</td> --}}
+                                    {{-- <td>{{ $labconcrete->mixingconcrete->slankumo_klase }}</td> --}}
+                                    <td>{{ $labconcrete->slankumas_mm }}</td>
+                                    {{-- <td>{{ $labconcrete->mixingconcrete->salcio_priedai }}</td>
+                                    <td>{{ $labconcrete->mixingconcrete->maisykle }}</td>
+                                    <td>{{ $labconcrete->mixingconcrete->uzsakymo_nr }}</td> --}}
+                                    <td>{{ $labconcrete->plotis_mm }}</td>
+                                    <td>{{ $labconcrete->ilgis_mm }}</td>
+                                    <td>{{ $labconcrete->aukstis_mm }}</td>
+                                    <td>x</td>
+                                    <td>{{ $labconcrete->bandinio_mase_g }}</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>{{ $labconcrete->ardancioji_jega_kn }}</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
-    
-            <div class="col-md-12 maisimo_duonbaze">
-                <div class="card" style="background-color: #fffd">
-                    <div class="card-header">Maišymo duomenis</div>
-    
-                    <div class="card-body">
-    
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Maišymo data</th>
-                                    @foreach ($createMixingConcretesFormos1 as $createMixingConcretesForma1)
-                                    <th>{{ $createMixingConcretesForma1['label'] }}</th>
-                                    @endforeach
-                                    <th>Bukle</th>
-                                    <th>Užsakovas</th>
-                                    <th>Komentaras</th>
-                                    <th>Veiksmai</th>
-                                </tr>
-                            </thead>
-        
-                            <tbody>
-                                @forelse ($mixingconcretes as $mixingconcrete)
-                                @if ($mixingconcrete->delete == '0')
-                                <tr>
-                                    <td>{{ $mixingconcrete->created_at }}</td>
-                                    @foreach ($createMixingConcretesFormos1 as $createMixingConcretesForma1)
-                                    <td>{{ $mixingconcrete->{ $createMixingConcretesForma1['name'] } }}</td>
-                                    @endforeach
-                                    <td>{{ $mixingconcrete->uzsakymo_raide }}</td>
-                                    <td>{{ $mixingconcrete->uzsakovas }}</td>
-                                    <td>{{ $mixingconcrete->komentaras }}</td>
-    
-                                    <td>
-                                        <a href="{{route('mixingconcretes-edit', $mixingconcrete)}}" class="btn btn-success m-1">Redaguoti</a>
-                                        {{-- <a href="{{route('mixingconcretes-delete', $mixingconcrete)}}" class="btn btn-danger m-1">Trinti</a> --}}
-                                        <a href="{{ route('mixingconcretes-show', $mixingconcrete)}}" class="btn btn-secondary m-1">Peržiūrėti</a>
-                                    </td>
-    
-                                </tr>
-                                @endif
-                                @empty
-                                <tr>
-                                    <td colspan="3">Maišimų nėra</td>
-                                </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-    
-                    </div>
-                </div>
-            </div>
-    
         </div>
+
     </div>
 </div>
 @endsection
 
-@section('title', 'Betono maišymas')
+@section('title', 'Maišymo duonbaze')

@@ -28,5 +28,6 @@ class MixingConcrete extends Model
         'uzsakymo_raide',
         'uzsakovas',
         'komentaras',
+        // 'user_id',
     ];
 }

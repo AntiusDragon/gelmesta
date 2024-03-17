@@ -3,17 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\LabConcrete;
+use App\Models\MixingConcrete;
 use App\Http\Requests\StoreLabConcreteRequest;
 use App\Http\Requests\UpdateLabConcreteRequest;
 
 class LabConcreteController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        // $labconcrete = LabConcrete::where('mixingconcrete_id',  1)->get();
+        // dump($labconcrete);
+        $labconcretes = LabConcrete::all();
+        $mixingconcretes = MixingConcrete::all();
+        
+        return view('labconcretes.index', [
+            'labconcretes' => $labconcretes,
+            'mixingconcretes' => $mixingconcretes,
+        ]);
     }
 
     /**
@@ -22,8 +36,11 @@ class LabConcreteController extends Controller
     public function create()
     {
         $labconcretes = LabConcrete::all();
+        $mixingconcretes = MixingConcrete::all();
+
         return view('labconcretes.create', [
             'labconcretes' => $labconcretes,
+            'mixingconcretes' => $mixingconcretes,
         ]);
     }
 
@@ -32,7 +49,9 @@ class LabConcreteController extends Controller
      */
     public function store(StoreLabConcreteRequest $request)
     {
-        //
+        LabConcrete::create($request->all());
+
+        return redirect()->route('labconcrete.index');
     }
 
     /**

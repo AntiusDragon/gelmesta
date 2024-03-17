@@ -422,9 +422,6 @@
                                         @foreach ($createMixingConcretesFormos1 as $createMixingConcretesForma1)
                                         <th>{{ $createMixingConcretesForma1['label'] }}</th>
                                         @endforeach
-                                        <th>Bukle</th>
-                                        <th>Užsakovas</th>
-                                        <th>Komentaras</th>
                                     </tr>
                                 </thead>
                                 <tbody>

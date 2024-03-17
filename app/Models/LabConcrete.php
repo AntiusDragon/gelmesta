@@ -11,11 +11,18 @@ class LabConcrete extends Model
 
     protected $fillable = [
         'slankumas_mm',
-        'itraukto_oro_kiekis',
+        // 'itraukto_oro_kiekis',
         'plotis_mm',
         'ilgis_mm',
         'aukstis_mm',
         'bandinio_mase_g',
         'ardancioji_jega_kn',
+        'mixing_concrete_id',
+        'user_id',
     ];
+
+    public function mixingconcrete ()
+    {
+        return $this->belongsTo(MixingConcrete::class);
+    }
 }
