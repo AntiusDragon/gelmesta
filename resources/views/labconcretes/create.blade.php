@@ -526,7 +526,7 @@
                                         <tr>
                                             {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ $mixingconcrete->id }}" placeholder="" name="mixing_concrete_id"></div> --}}
                                             {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="delete"></div> --}}
-                                            <div class="form-group mb-3"><input type="test" class="form-control" value="{{ Auth::user()->id }}" placeholder="" name="user_maise_id"></div>
+                                            <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ Auth::user()->id }}" placeholder="" name="user_maise_id"></div>
                                             <td>{{ $mixingconcrete->created_at }}</td>
                                             <td>x</td>
                                             <td>{{ $mixingconcrete->marke }}</td>
@@ -572,58 +572,6 @@
                                 </form>
                             @endif
                         @endforeach
-    
-                    </div>
-                </div>
-            </div>
-    
-            <div class="col-md-12 maisimo_duonbaze">
-                <div class="card" style="background-color: #fffd">
-                    <div class="card-header">Maišymo duomenis</div>
-    
-                    <div class="card-body">
-    
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Maišymo data</th>
-                                    @foreach ($createMixingConcretesFormos1 as $createMixingConcretesForma1)
-                                    <th>{{ $createMixingConcretesForma1['label'] }}</th>
-                                    @endforeach
-                                    <th>Bukle</th>
-                                    <th>Užsakovas</th>
-                                    <th>Komentaras</th>
-                                    <th>Veiksmai</th>
-                                </tr>
-                            </thead>
-        
-                            <tbody>
-                                @forelse ($mixingconcretes as $mixingconcrete)
-                                @if ($mixingconcrete->delete == '0')
-                                <tr>
-                                    <td>{{ $mixingconcrete->created_at }}</td>
-                                    @foreach ($createMixingConcretesFormos1 as $createMixingConcretesForma1)
-                                    <td>{{ $mixingconcrete->{ $createMixingConcretesForma1['name'] } }}</td>
-                                    @endforeach
-                                    <td>{{ $mixingconcrete->uzsakymo_raide }}</td>
-                                    <td>{{ $mixingconcrete->uzsakovas }}</td>
-                                    <td>{{ $mixingconcrete->komentaras }}</td>
-    
-                                    <td>
-                                        <a href="{{route('mixingconcretes-edit', $mixingconcrete)}}" class="btn btn-success m-1">Redaguoti</a>
-                                        {{-- <a href="{{route('mixingconcretes-delete', $mixingconcrete)}}" class="btn btn-danger m-1">Trinti</a> --}}
-                                        <a href="{{ route('mixingconcretes-show', $mixingconcrete)}}" class="btn btn-secondary m-1">Peržiūrėti</a>
-                                    </td>
-    
-                                </tr>
-                                @endif
-                                @empty
-                                <tr>
-                                    <td colspan="3">Maišimų nėra</td>
-                                </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
     
                     </div>
                 </div>
