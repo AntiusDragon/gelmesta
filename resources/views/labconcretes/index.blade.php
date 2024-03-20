@@ -126,12 +126,6 @@
             'name' => 'created_at',
             'aprasas' => 'Maišymo data',
         ],
-        [
-            'label' => 'Maišymo data',
-            'type' => 'text',
-            'name' => 'created_at',
-            'aprasas' => 'Maišymo data',
-        ],
         // [
         //     'label' => 'Delete',
         //     'type' => 'hidden',
@@ -239,30 +233,6 @@
             'type' => 'text',
             'name' => '',
             'aprasas' => 'Bandinio plotas, mm2',
-        ],
-        [
-            'label' => 'Bandinio masė, g',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => '',
-        ],
-        [
-            'label' => 'Bandinio tūris, cm3',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => '',
-        ],
-        [
-            'label' => 'Bandinio tankis, g/cm3',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => '',
-        ],
-        [
-            'label' => 'Vidutinis serijos tankis, kg/m3',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => '',
         ],
         [
             'label' => 'Ardančioji jėga, kN',
@@ -373,6 +343,30 @@
         //     'aprasas' => '',
         // ],
         [
+            'label' => 'Bandinio masė, g',
+            'type' => 'text',
+            'name' => '',
+            'aprasas' => '',
+        ],
+        [
+            'label' => 'Bandinio tūris, cm3',
+            'type' => 'text',
+            'name' => '',
+            'aprasas' => '',
+        ],
+        [
+            'label' => 'Bandinio tankis, g/cm3',
+            'type' => 'text',
+            'name' => '',
+            'aprasas' => '',
+        ],
+        [
+            'label' => 'Vidutinis serijos tankis, kg/m3',
+            'type' => 'text',
+            'name' => '',
+            'aprasas' => '',
+        ],
+        [
             'label' => 'FCK',
             'type' => 'text',
             'name' => '',
@@ -422,41 +416,56 @@
                         </thead>
                         <tbody>
                             @forelse ($labconcretes as $labconcrete)
+                            @php
+                            $bandinioPlotas = $labconcrete->plotis_mm * $labconcrete->ilgis_mm;
+                            $pavedimoKoficientas = [];
+                            if ( $labconcrete->plotis_mm < 125) {
+                                return $pavedimoKoficientas = '0,95';
+                            // } else {
+                            //     return $pavedimoKoficientas = '1';
+                            };
+                            $bandinioTuris = $labconcrete->plotis_mm * $labconcrete->ilgis_mm * $labconcrete->aukstis_mm / 1000;
+                            $bandinioStipris = $labconcrete->ardancioji_jega_kn / $bandinioPlotas;
+                            @endphp
                                 <tr>
                                     {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ $mixingconcrete->id }}" placeholder="" name="mixing_concrete_id"></div> --}}
                                     {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="delete"></div> --}}
                                     <td>{{ $labconcrete->user_maise_id }}</td>
                                     {{-- <td>{{ $labconcrete->mixingconcrete->created_at }}</td> --}}
-                                    <td>x</td>
+                                    <td>Marke</td>
+                                    <td>Slankumas</td>
                                     {{-- <td>{{ $labconcrete->mixingconcrete->marke }}</td> --}}
                                     {{-- <td>{{ $labconcrete->mixingconcrete->slankumo_klase }}</td> --}}
                                     <td>{{ $labconcrete->slankumas_mm }}</td>
+                                    <td>XF</td>
+                                    <td>maisikle</td>
+                                    <td>nr</td>
                                     {{-- <td>{{ $labconcrete->mixingconcrete->salcio_priedai }}</td>
                                     <td>{{ $labconcrete->mixingconcrete->maisykle }}</td>
                                     <td>{{ $labconcrete->mixingconcrete->uzsakymo_nr }}</td> --}}
                                     <td>{{ $labconcrete->plotis_mm }}</td>
                                     <td>{{ $labconcrete->ilgis_mm }}</td>
                                     <td>{{ $labconcrete->aukstis_mm }}</td>
+                                    <td style="background-color: #bbb">{{ $bandinioPlotas }}</td>
+                                    <td>{{ $labconcrete->ardancioji_jega_kn }}</td>
+                                    <td style="background-color: #bbb">@if ( $labconcrete->plotis_mm < 125) 0,95 @else 1  @endif</td>
+                                    <td>{{ $bandinioStipris }} * (@if ( $labconcrete->plotis_mm < 125) 0,95 @else 1  @endif) * 1000</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>></td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
+                                    <td>x</td>
                                     <td>x</td>
                                     <td>{{ $labconcrete->bandinio_mase_g }}</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>{{ $labconcrete->ardancioji_jega_kn }}</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
+                                    <td>{{ $bandinioTuris }}</td>
+                                    <td>{{ $labconcrete->bandinio_mase_g / $bandinioTuris }}</td>
                                     <td>x</td>
                                     <td>x</td>
                                     <td>x</td>
