@@ -71,9 +71,15 @@
             'aprasas' => 'Šalcio priedai',
         ],
         [
-            'label' => 'Pagaminti kubeliai vnt',
+            'label' => 'Pagaminti kubeliai "G" vnt',
             'type' => 'text',
-            'name' => 'pagaminti_kubeliai',
+            'name' => 'pagaminti_kubeliai_g',
+            'aprasas' => 'Pagaminti kubelių kiekis',
+        ],
+        [
+            'label' => 'Pagaminti kubeliai "P" vnt',
+            'type' => 'text',
+            'name' => 'pagaminti_kubeliai_p',
             'aprasas' => 'Pagaminti kubelių kiekis',
         ],
         [
@@ -235,7 +241,8 @@
                                         <td class="form-group mb-3"><input type="text" class="form-control" value="{{$mixingconcrete->slankumo_klase}}" placeholder="Slankumas" name="slankumo_klase"></td>
                                         <td class="form-group mb-3"><input type="text" class="form-control" value="{{$mixingconcrete->tipas}}" placeholder="Typas" name="tipas"></td>
                                         <td class="form-group mb-3"><input type="text" class="form-control" value="{{$mixingconcrete->salcio_priedai}}" placeholder="XF / F" name="salcio_priedai"></td>
-                                        <td class="form-group mb-3"><input type="text" class="form-control" value="{{$mixingconcrete->pagaminti_kubeliai}}" placeholder="Pagaminti kubeliai vnt." name="pagaminti_kubeliai"></td>
+                                        <td class="form-group mb-3"><input type="text" class="form-control" value="{{$mixingconcrete->pagaminti_kubeliai_g}}" placeholder="Pagaminti kubeliai &quot;G&quot; vnt." name="pagaminti_kubeliai_g"></td>
+                                        <td class="form-group mb-3"><input type="text" class="form-control" value="{{$mixingconcrete->pagaminti_kubeliai_p}}" placeholder="Pagaminti kubeliai &quot;P&quot; vnt." name="pagaminti_kubeliai_p"></td>
                                         <td class="form-group mb-3"><input type="text" class="form-control" value="{{$mixingconcrete->maisykle}}" placeholder="Maišyklė" name="maisykle"></td>
                                         <td class="form-group mb-3"><input type="text" class="form-control" value="{{$mixingconcrete->kiekis_m3}}" placeholder="Kiekis, m3" name="kiekis_m3"></td>
                                         <td class="form-group mb-3"><input type="text" class="form-control" value="{{$mixingconcrete->uzsakymo_nr}}" placeholder="Užsakymo Nr" name="uzsakymo_nr"></td>
@@ -245,32 +252,37 @@
                                 </tbody>
                             </table>
     
-                            <button style="width: 90%" type="submit" class="btn btn-outline-primary m-1">Keisti</button>
-                            <a href="{{ route('mixingconcretes-index') }}" class="btn btn-secondary m-1">Atšaukti</a>
-                            @csrf
-                            @method('put')
+                            <div class="btn_centras">
+                                <button style="width: 49%" type="submit" class="btn btn-outline-primary m-1">Keisti</button>
+                                @csrf
+                                @method('put')
+                                <a style="width: 49%" href="{{ route('mixingconcretes-index') }}" class="btn btn-secondary m-1">Atšaukti</a>
+                            </div>
                         </form>
     
                         <form action="{{route('mixingconcretes-update', $mixingconcrete)}}" method="post">
-                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="1" placeholder="" name="delete"></div>
-                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->maisikles_id}}" placeholder="Maišykles ID" name="maisikles_id"></div>
-                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="maisikles_recepto_id"></div>
-                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="user_maise_id"></div>
-                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="user_edit_id"></div>
-                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->marke}}" placeholder="Marke" name="marke"></div>
-                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->slankumo_klase}}" placeholder="Slankumas" name="slankumo_klase"></div>
-                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->tipas}}" placeholder="Typas" name="tipas"></div>
-                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->salcio_priedai}}" placeholder="XF / F" name="salcio_priedai"></div>
-                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->pagaminti_kubeliai}}" placeholder="Pagaminti kubeliai vnt." name="pagaminti_kubeliai"></div>
-                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->maisykle}}" placeholder="Maišyklė" name="maisykle"></div>
-                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->kiekis_m3}}" placeholder="Kiekis, m3" name="kiekis_m3"></div>
-                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->uzsakymo_nr}}" placeholder="Užsakymo Nr" name="uzsakymo_nr"></div>
-                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->uzsakovas}}" placeholder="Užsakovas" name="uzsakovas"></div>
-                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->komentaras}}" placeholder="Komentaras" name="komentaras"></div>
+                            <div class="form-group mb-3"><input type="hidden" class="form-control" value="1" placeholder="" name="delete"></div>
+                            <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->maisikles_id}}" placeholder="Maišykles ID" name="maisikles_id"></div>
+                            <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="maisikles_recepto_id"></div>
+                            <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="user_maise_id"></div>
+                            <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="user_edit_id"></div>
+                            <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->marke}}" placeholder="Marke" name="marke"></div>
+                            <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->slankumo_klase}}" placeholder="Slankumas" name="slankumo_klase"></div>
+                            <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->tipas}}" placeholder="Typas" name="tipas"></div>
+                            <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->salcio_priedai}}" placeholder="XF / F" name="salcio_priedai"></div>
+                            <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->pagaminti_kubeliai_g}}" placeholder="Pagaminti kubeliai &quot;G&quot; vnt." name="pagaminti_kubeliai_g"></div>
+                            <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->pagaminti_kubeliai_p}}" placeholder="Pagaminti kubeliai &quot;P&quot; vnt." name="pagaminti_kubeliai_p"></div>
+                            <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->maisykle}}" placeholder="Maišyklė" name="maisykle"></div>
+                            <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->kiekis_m3}}" placeholder="Kiekis, m3" name="kiekis_m3"></div>
+                            <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->uzsakymo_nr}}" placeholder="Užsakymo Nr" name="uzsakymo_nr"></div>
+                            <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->uzsakovas}}" placeholder="Užsakovas" name="uzsakovas"></div>
+                            <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{$mixingconcrete->komentaras}}" placeholder="Komentaras" name="komentaras"></div>
     
-                            <button style="width: 90%" type="submit" class="btn btn-outline-danger m-1">Trinti</button>
-                            @csrf
-                            @method('put')
+                            <div class="btn_centras">
+                                <button style="width: 98.5%" type="submit" class="btn btn-outline-danger m-1">Trinti</button>
+                                @csrf
+                                @method('put')
+                            </div>
                         </form>
     
                     </div>

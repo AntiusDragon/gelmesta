@@ -49,7 +49,7 @@ class LabConcreteController extends Controller
      */
     public function store(StoreLabConcreteRequest $request)
     {
-        LabConcrete::create($request->all());
+        $labconcretes = LabConcrete::create($request->all())->id;
 
         return redirect()->route('labconcrete.index');
     }

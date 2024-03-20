@@ -412,16 +412,16 @@
             <div class="card" style="background-color: #fffd">
                 <div class="card-header">Betono labaratojija</div>
 
-                <table>
-                    <thead>
-                        <tr>
-                            @foreach ($kubeliuBandimoZurnalasi1 as $kubeliuBandimoZurnalas1)
-                            <th>{{ $kubeliuBandimoZurnalas1['label'] }}</th>
-                            @endforeach
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($labconcretes as $labconcrete)
+                    <table>
+                        <thead>
+                            <tr>
+                                @foreach ($kubeliuBandimoZurnalasi1 as $kubeliuBandimoZurnalas1)
+                                <th>{{ $kubeliuBandimoZurnalas1['label'] }}</th>
+                                @endforeach
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($labconcretes as $labconcrete)
                                 <tr>
                                     {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ $mixingconcrete->id }}" placeholder="" name="mixing_concrete_id"></div> --}}
                                     {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="delete"></div> --}}

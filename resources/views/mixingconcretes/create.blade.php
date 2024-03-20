@@ -71,9 +71,15 @@
             'aprasas' => 'Šalcio priedai',
         ],
         [
-            'label' => 'Pagaminti kubeliai vnt',
+            'label' => 'Pagaminti kubeliai "G" vnt',
             'type' => 'text',
-            'name' => 'pagaminti_kubeliai',
+            'name' => 'pagaminti_kubeliai_g',
+            'aprasas' => 'Pagaminti kubelių kiekis',
+        ],
+        [
+            'label' => 'Pagaminti kubeliai "P" vnt',
+            'type' => 'text',
+            'name' => 'pagaminti_kubeliai_p',
             'aprasas' => 'Pagaminti kubelių kiekis',
         ],
         [
@@ -236,178 +242,181 @@
             <div class="col-md-12 mb-4 pagaminti_kubeliai">
                 <div class="card" style="background-color: #fffd">
                     <div class="card-header">Pagaminti kubeliai</div>
-                    <table>
-                        <thead>
-                                {{-- @foreach ($pagamintiKubeliai as $pagamintiKubelis)
-                                <tr>
-                                    <th>{{ $pagamintiKubelis['label'] }}</th>
-                                    @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
-                                        @php
-                                            $background_color = '#fff';
-                                            foreach ($filteredData as $yearWeek => $weekData) {
-                                                [$year, $week] = explode('-', $yearWeek);
-                                    
-                                                if ($year == $currentYear && $week == $currentWeek) {
-                                                    foreach ($weekData as $mixingconcrete) {
-                                                        
-                                                        if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match($pagamintiKubelis['bukle'], $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai !== null) {
-                                                            $background_color = 'red';
-                                    
-                                                            foreach ($weekData as $mixingconcrete) {
-                                                                if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match($pagamintiKubelis['bukle'], $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai !== null && $mixingconcrete->pagaminti_kubeliai > 0) {
-                                                                    $background_color = '#0F0';
+
+                    <div class="card-body">
+                        <table>
+                            <thead>
+                                    {{-- @foreach ($pagamintiKubeliai as $pagamintiKubelis)
+                                    <tr>
+                                        <th>{{ $pagamintiKubelis['label'] }}</th>
+                                        @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
+                                            @php
+                                                $background_color = '#fff';
+                                                foreach ($filteredData as $yearWeek => $weekData) {
+                                                    [$year, $week] = explode('-', $yearWeek);
+                                        
+                                                    if ($year == $currentYear && $week == $currentWeek) {
+                                                        foreach ($weekData as $mixingconcrete) {
+                                                            
+                                                            if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match($pagamintiKubelis['bukle'], $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai !== null) {
+                                                                $background_color = 'red';
+                                        
+                                                                foreach ($weekData as $mixingconcrete) {
+                                                                    if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match($pagamintiKubelis['bukle'], $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai !== null && $mixingconcrete->pagaminti_kubeliai > 0) {
+                                                                        $background_color = '#0F0';
+                                                                    }
                                                                 }
+                                        
+                                                                break 2;
                                                             }
-                                    
-                                                            break 2;
                                                         }
                                                     }
                                                 }
-                                            }
-                                        @endphp
-                                        <th class="form-group mb-3" style="background-color: {{ $background_color }}">
-                                            {{ $kubeliuMerkeForma1['label'] }}
-                                        </th>
-                                    @endforeach
-                                </tr>
-                                @endforeach --}}
-    
-                                <tr>
-                                    <th>Gamyba+XF/F</th>
-                                    @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
-                                        @php
-                                            $background_color = '#fff';
-                                            foreach ($filteredData as $yearWeek => $weekData) {
-                                                [$year, $week] = explode('-', $yearWeek);
-                                    
-                                                if ($year == $currentYear && $week == $currentWeek) {
-                                                    foreach ($weekData as $mixingconcrete) {
-                                                        
-                                                        if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match('/^G/', $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai !== null) {
-                                                            $background_color = 'red';
-                                    
-                                                            foreach ($weekData as $mixingconcrete) {
-                                                                if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match('/^G/', $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai !== null && $mixingconcrete->pagaminti_kubeliai > 0) {
-                                                                    $background_color = '#0F0';
+                                            @endphp
+                                            <th class="form-group mb-3" style="background-color: {{ $background_color }}">
+                                                {{ $kubeliuMerkeForma1['label'] }}
+                                            </th>
+                                        @endforeach
+                                    </tr>
+                                    @endforeach --}}
+        
+                                    <tr>
+                                        <th>Gamyba+XF/F</th>
+                                        @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
+                                            @php
+                                                $background_color = '#fff';
+                                                foreach ($filteredData as $yearWeek => $weekData) {
+                                                    [$year, $week] = explode('-', $yearWeek);
+                                        
+                                                    if ($year == $currentYear && $week == $currentWeek) {
+                                                        foreach ($weekData as $mixingconcrete) {
+                                                            
+                                                            if ($mixingconcrete->delete === 0 && $mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match('/^G/', $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai !== null) {
+                                                                $background_color = 'red';
+                                        
+                                                                foreach ($weekData as $mixingconcrete) {
+                                                                    if ($mixingconcrete->delete === 0 && $mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match('/^G/', $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai !== null && $mixingconcrete->pagaminti_kubeliai_g > 0) {
+                                                                        $background_color = '#0F0';
+                                                                    }
                                                                 }
+                                        
+                                                                break 2;
                                                             }
-                                    
-                                                            break 2;
                                                         }
                                                     }
                                                 }
-                                            }
-                                        @endphp
-                                        <th class="form-group mb-3" style="background-color: {{ $background_color }}">
-                                            {{ $kubeliuMerkeForma1['label'] }}
-                                        </th>
-                                    @endforeach
-                                </tr>
-                                
-                                <tr>
-                                    <th>Pardavimai+XF/F</th>
-                                    @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
-                                        @php
-                                            $background_color = '#fff';
-                                            foreach ($filteredData as $yearWeek => $weekData) {
-                                                [$year, $week] = explode('-', $yearWeek);
+                                            @endphp
+                                            <th class="form-group mb-3" style="background-color: {{ $background_color }}">
+                                                {{ $kubeliuMerkeForma1['label'] }}
+                                            </th>
+                                        @endforeach
+                                    </tr>
                                     
-                                                if ($year == $currentYear && $week == $currentWeek) {
-                                                    foreach ($weekData as $mixingconcrete) {
-                                                        
-                                                        if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match('/^P/', $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai !== null) {
-                                                            $background_color = 'red';
-                                    
-                                                            foreach ($weekData as $mixingconcrete) {
-                                                                if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match('/^P/', $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai !== null && $mixingconcrete->pagaminti_kubeliai > 0) {
-                                                                    $background_color = '#0F0';
+                                    <tr>
+                                        <th>Pardavimai+XF/F</th>
+                                        @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
+                                            @php
+                                                $background_color = '#fff';
+                                                foreach ($filteredData as $yearWeek => $weekData) {
+                                                    [$year, $week] = explode('-', $yearWeek);
+                                        
+                                                    if ($year == $currentYear && $week == $currentWeek) {
+                                                        foreach ($weekData as $mixingconcrete) {
+                                                            
+                                                            if ($mixingconcrete->delete === 0 && $mixingconcrete->marke === $kubeliuMerkeForma1['label'] && $mixingconcrete->salcio_priedai !== null) {
+                                                                $background_color = 'red';
+                                        
+                                                                foreach ($weekData as $mixingconcrete) {
+                                                                    if ($mixingconcrete->delete === 0 && $mixingconcrete->marke === $kubeliuMerkeForma1['label'] && $mixingconcrete->salcio_priedai !== null && $mixingconcrete->pagaminti_kubeliai_p > 0) {
+                                                                        $background_color = '#0F0';
+                                                                    }
                                                                 }
+                                        
+                                                                break 2;
                                                             }
-                                    
-                                                            break 2;
                                                         }
                                                     }
                                                 }
-                                            }
-                                        @endphp
-                                        <th class="form-group mb-3" style="background-color: {{ $background_color }}">
-                                            {{ $kubeliuMerkeForma1['label'] }}
-                                        </th>
-                                    @endforeach
-                                </tr>
-                                <tr>
-                                    <th>Gamyba</th>
-                                    @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
-                                        @php
-                                            $background_color = '#fff';
-                                            foreach ($filteredData as $yearWeek => $weekData) {
-                                                [$year, $week] = explode('-', $yearWeek);
-                                    
-                                                if ($year == $currentYear && $week == $currentWeek) {
-                                                    foreach ($weekData as $mixingconcrete) {
-                                                        
-                                                        if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match('/^G/', $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai == null) {
-                                                            $background_color = 'red';
-                                    
-                                                            foreach ($weekData as $mixingconcrete) {
-                                                                if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match('/^G/', $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai == null && $mixingconcrete->pagaminti_kubeliai > 0) {
-                                                                    $background_color = '#0F0';
+                                            @endphp
+                                            <th class="form-group mb-3" style="background-color: {{ $background_color }}">
+                                                {{ $kubeliuMerkeForma1['label'] }}
+                                            </th>
+                                        @endforeach
+                                    </tr>
+                                    <tr>
+                                        <th>Gamyba</th>
+                                        @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
+                                            @php
+                                                $background_color = '#fff';
+                                                foreach ($filteredData as $yearWeek => $weekData) {
+                                                    [$year, $week] = explode('-', $yearWeek);
+                                        
+                                                    if ($year == $currentYear && $week == $currentWeek) {
+                                                        foreach ($weekData as $mixingconcrete) {
+                                                            
+                                                            if ($mixingconcrete->delete === 0 && $mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match('/^G/', $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai == null) {
+                                                                $background_color = 'red';
+                                        
+                                                                foreach ($weekData as $mixingconcrete) {
+                                                                    if ($mixingconcrete->delete === 0 && $mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match('/^G/', $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai == null && $mixingconcrete->pagaminti_kubeliai_g > 0) {
+                                                                        $background_color = '#0F0';
+                                                                    }
                                                                 }
+                                        
+                                                                break 2;
                                                             }
-                                    
-                                                            break 2;
                                                         }
                                                     }
                                                 }
-                                            }
-                                        @endphp
-                                        <th class="form-group mb-3" style="background-color: {{ $background_color }}">
-                                            {{ $kubeliuMerkeForma1['label'] }}
-                                        </th>
-                                    @endforeach
-                                </tr>
-    
-                                <tr>
-                                    <th>Pardavimai</th>
-                                    @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
-                                        @php
-                                            $background_color = '#fff';
-                                            foreach ($filteredData as $yearWeek => $weekData) {
-                                                [$year, $week] = explode('-', $yearWeek);
-                                    
-                                                if ($year == $currentYear && $week == $currentWeek) {
-                                                    foreach ($weekData as $mixingconcrete) {
-                                                        
-                                                        if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match('/^P/', $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai == null) {
-                                                            $background_color = 'red';
-                                    
-                                                            foreach ($weekData as $mixingconcrete) {
-                                                                if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match('/^P/', $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai == null && $mixingconcrete->pagaminti_kubeliai > 0) {
-                                                                    $background_color = '#0F0';
+                                            @endphp
+                                            <th class="form-group mb-3" style="background-color: {{ $background_color }}">
+                                                {{ $kubeliuMerkeForma1['label'] }}
+                                            </th>
+                                        @endforeach
+                                    </tr>
+        
+                                    <tr>
+                                        <th>Pardavimai</th>
+                                        @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
+                                            @php
+                                                $background_color = '#fff';
+                                                foreach ($filteredData as $yearWeek => $weekData) {
+                                                    [$year, $week] = explode('-', $yearWeek);
+                                        
+                                                    if ($year == $currentYear && $week == $currentWeek) {
+                                                        foreach ($weekData as $mixingconcrete) {
+                                                            
+                                                            if ($mixingconcrete->delete === 0 && $mixingconcrete->marke === $kubeliuMerkeForma1['label'] && $mixingconcrete->salcio_priedai == null) {
+                                                                $background_color = 'red';
+                                        
+                                                                foreach ($weekData as $mixingconcrete) {
+                                                                    if ($mixingconcrete->delete === 0 && $mixingconcrete->marke === $kubeliuMerkeForma1['label'] && $mixingconcrete->salcio_priedai == null && $mixingconcrete->pagaminti_kubeliai_p > 0) {
+                                                                        $background_color = '#0F0';
+                                                                    }
                                                                 }
+                                        
+                                                                break 2;
                                                             }
-                                    
-                                                            break 2;
                                                         }
                                                     }
                                                 }
-                                            }
-                                        @endphp
-                                        <th class="form-group mb-3" style="background-color: {{ $background_color }}">
-                                            {{ $kubeliuMerkeForma1['label'] }}
-                                        </th>
+                                            @endphp
+                                            <th class="form-group mb-3" style="background-color: {{ $background_color }}">
+                                                {{ $kubeliuMerkeForma1['label'] }}
+                                            </th>
+                                        @endforeach
+                                    </tr>
+                            </thead>
+        
+                            <tbody>
+                                <tr>
+                                    @foreach ($createMixingConcretesFormos1 as $createMixingConcretesForma1)
+                                    <td></td>
                                     @endforeach
                                 </tr>
-                        </thead>
-    
-                        <tbody>
-                            <tr>
-                                @foreach ($createMixingConcretesFormos1 as $createMixingConcretesForma1)
-                                <td></td>
-                                @endforeach
-                            </tr>
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
     
@@ -415,42 +424,48 @@
                 <div class="card" style="background-color: #fffd">
                     <div class="card-header">Naujas maišymas</div>
     
-                        <form action="{{route('mixingconcretes-store')}}" method="post">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        @foreach ($createMixingConcretesFormos1 as $createMixingConcretesForma1)
-                                        <th>{{ $createMixingConcretesForma1['label'] }}</th>
-                                        @endforeach
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="delete"></div>
-                                        <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Maišykles ID" name="maisikles_id"></td>
-                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="maisikles_recepto_id"></div>
-                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="user_maise_id"></div>
-                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="user_edit_id"></div>
-                                        <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Marke" name="marke"></td>
-                                        <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Slankumas" name="slankumo_klase"></td>
-                                        <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Typas" name="tipas"></td>
-                                        <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="XF / F" name="salcio_priedai"></td>
-                                        <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Pagaminti kubeliai vnt." name="pagaminti_kubeliai"></td>
-                                        <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Maišyklė" name="maisykle"></td>
-                                        <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Kiekis, m3" name="kiekis_m3"></td>
-                                        <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Užsakymo Nr" name="uzsakymo_nr"></td>
-                                        <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Bukle" name="uzsakymo_raide"></td>
-                                        <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Užsakovas" name="uzsakovas"></td>
-                                        <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Komentaras" name="komentaras"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-    
-                            <button style="width: 90%" type="submit" class="btn btn-outline-primary m-1">Pridėti nauja maišyma</button>
+                    <form action="{{route('mixingconcretes-store')}}" method="post">
+                        <table>
+                            <thead>
+                                <tr>
+                                    @foreach ($createMixingConcretesFormos1 as $createMixingConcretesForma1)
+                                    <th>{{ $createMixingConcretesForma1['label'] }}</th>
+                                    @endforeach
+                                    <th>Bukle</th>
+                                    <th>Užsakovas</th>
+                                    <th>Komentaras</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="delete"></div>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Maišykles ID" name="maisikles_id"></td>
+                                    <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="maisikles_recepto_id"></div>
+                                    <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="user_maise_id"></div>
+                                    <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="user_edit_id"></div>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Marke" name="marke"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Slankumas" name="slankumo_klase"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Typas" name="tipas"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="XF / F" name="salcio_priedai"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Pagaminti kubeliai &quot;G&quot; vnt." name="pagaminti_kubeliai_g"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Pagaminti kubeliai &quot;P&quot; vnt." name="pagaminti_kubeliai_p"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Maišyklė" name="maisykle"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Kiekis, m3" name="kiekis_m3"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Užsakymo Nr" name="uzsakymo_nr"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Bukle" name="uzsakymo_raide"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Užsakovas" name="uzsakovas"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Komentaras" name="komentaras"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="btn_centras">
+                            <button style="width: 98.5%" type="submit" class="btn btn-outline-primary m-1">Pridėti nauja maišyma</button>
                             {{-- <a href="{{ route('clients-index')}}" class="btn btn-secondary m-1">Atšaukti</a> --}}
                             @csrf
                             {{-- @method('put') --}}
-                        </form>
+                        </div>
+                    </form>
     
                     </div>
                 </div>
@@ -477,7 +492,13 @@
                             </thead>
         
                             <tbody>
-                                @forelse ($mixingconcretes as $mixingconcrete)
+                                @php
+                                    $lastDayRecords = $mixingconcretes->filter(function ($record) {
+                                        return $record->created_at->isToday();
+                                    });
+                                @endphp
+
+                                @forelse ($lastDayRecords as $mixingconcrete)
                                 @if ($mixingconcrete->delete == '0')
                                 <tr>
                                     <td>{{ $mixingconcrete->created_at }}</td>
@@ -498,7 +519,7 @@
                                 @endif
                                 @empty
                                 <tr>
-                                    <td colspan="3">Maišimų nėra</td>
+                                    <td colspan="15">Maišimų nėra</td>
                                 </tr>
                                 @endforelse
                             </tbody>

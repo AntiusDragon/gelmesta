@@ -77,9 +77,15 @@
                 'aprasas' => 'Šalcio priedai',
             ],
             [
-                'label' => 'Pagaminti kubeliai',
+                'label' => 'Pagaminti kubeliai "G" vnt',
                 'type' => 'text',
-                'name' => 'pagaminti_kubeliai',
+                'name' => 'pagaminti_kubeliai_g',
+                'aprasas' => 'Pagaminti kubelių kiekis',
+            ],
+            [
+                'label' => 'Pagaminti kubeliai "P" vnt',
+                'type' => 'text',
+                'name' => 'pagaminti_kubeliai_p',
                 'aprasas' => 'Pagaminti kubelių kiekis',
             ],
             [
@@ -165,7 +171,7 @@
                                 @endif
                                 @empty
                                 <tr>
-                                    <td colspan="3">Maišimų nėra</td>
+                                    <td colspan="15">Maišimų nėra</td>
                                 </tr>
                                 @endforelse
                             </tbody>

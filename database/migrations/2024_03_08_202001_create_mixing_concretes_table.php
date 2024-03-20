@@ -24,7 +24,8 @@ return new class extends Migration
             $table->enum('slankumo_klase', ['S1', 'S2', 'S3', 'S4', 'S5'])->nullable(false);
             $table->string('tipas')->nullable();
             $table->enum('salcio_priedai', ['F50', 'F100', 'F150', 'F200', 'F250', 'F300', 'XF1', 'XF2', 'XF3', 'XF4'])->nullable();
-            $table->tinyInteger('pagaminti_kubeliai')->unsigned()->nullable();
+            $table->tinyInteger('pagaminti_kubeliai_g')->unsigned()->nullable();
+            $table->tinyInteger('pagaminti_kubeliai_p')->unsigned()->nullable();
             $table->string('maisykle', 10)->nullable(false);
             $table->decimal('kiekis_m3', 6, 2);
             $table->string('uzsakymo_nr', 10)->nullable(false);
