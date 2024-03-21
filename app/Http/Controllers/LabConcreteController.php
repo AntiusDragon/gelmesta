@@ -51,7 +51,7 @@ class LabConcreteController extends Controller
     {
         $labconcretes = LabConcrete::create($request->all())->id;
 
-        return redirect()->route('labconcrete.index');
+        return redirect()->route('labconcretes-index');
     }
 
     /**

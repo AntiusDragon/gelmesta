@@ -32,8 +32,9 @@ class MixingConcrete extends Model
         // 'user_id',
     ];
 
-    public function labconcrete()
+    public function labConcrete()
     {
-        return $this->belongsToMany(Mechanic::class, 'mixing_lab_concrete');
+        // return $this->belongsToMany(MixingConcrete::class, 'mixing_lab_concrete');
+        return $this->hasMany(LabConcrete::class);
     }
 }

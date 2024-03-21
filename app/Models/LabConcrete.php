@@ -10,6 +10,8 @@ class LabConcrete extends Model
     use HasFactory;
 
     protected $fillable = [
+        'pagaminti_kubeliai_g',
+        'pagaminti_kubeliai_p',
         'slankumas_mm',
         // 'itraukto_oro_kiekis',
         'plotis_mm',

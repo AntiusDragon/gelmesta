@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('lab_concretes', function (Blueprint $table) {
             $table->id();
+            $table->tinyInteger('pagaminti_kubeliai_g')->unsigned()->nullable();
+            $table->tinyInteger('pagaminti_kubeliai_p')->unsigned()->nullable();
             $table->decimal('slankumas_mm', 4, 1)->unsigned()->nullable();
             // $table->decimal('itraukto_oro_kiekis', 2, 1)->unsigned()->nullable();
             $table->decimal('plotis_mm', 4, 1)->nullable();

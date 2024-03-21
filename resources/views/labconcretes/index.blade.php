@@ -121,6 +121,12 @@
     ];
     $kubeliuBandimoZurnalasi1 = [
         [
+            'label' => 'Laikimo vieta',
+            'type' => 'text',
+            'name' => 'pagaminti_kubeliai_g',
+            'aprasas' => 'Laikimo vieta',
+        ],
+        [
             'label' => 'Maišymo data',
             'type' => 'text',
             'name' => 'created_at',
@@ -417,6 +423,7 @@
                         <tbody>
                             @forelse ($labconcretes as $labconcrete)
                             @php
+                            $pagamintiKubeliai = ($labconcrete->pagaminti_kubeliai_g > 0) ?'Prie gaminio' :'Vandenije';
                             $fck = substr($labconcrete->mixingconcrete->marke, -2);
                             $fuc = (int)$fck;
                             $bandinioPlotas = $labconcrete->plotis_mm * $labconcrete->ilgis_mm;
@@ -440,6 +447,7 @@
                                     {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ $mixingconcrete->id }}" placeholder="" name="mixing_concrete_id"></div> --}}
                                     {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="delete"></div> --}}
                                     {{-- <td>{{ $labconcrete->user_maise_id }}</td> --}}
+                                    <td>{{ $pagamintiKubeliai }}</td>
                                     <td>{{ $labconcrete->mixingconcrete->created_at }}</td>
                                     <td>{{ $labconcrete->mixingconcrete->marke }}</td>
                                     <td>{{ $labconcrete->mixingconcrete->slankumo_klase }}</td>
