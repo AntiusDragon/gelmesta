@@ -31,4 +31,9 @@ class MixingConcrete extends Model
         'komentaras',
         // 'user_id',
     ];
+
+    public function labconcrete()
+    {
+        return $this->belongsToMany(Mechanic::class, 'mixing_lab_concrete');
+    }
 }

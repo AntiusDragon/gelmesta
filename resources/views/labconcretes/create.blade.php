@@ -527,9 +527,9 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ $mixingconcrete->id }}" placeholder="" name="mixing_concrete_id"></div> --}}
+                                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ $mixingconcrete->id }}" placeholder="" name="mixing_concrete_id"></div>
                                                         {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="delete"></div> --}}
-                                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ Auth::user()->id }}" placeholder="" name="user_maise_id"></div>
+                                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ Auth::user()->id }}" placeholder="" name="user_id"></div>
                                                         <td>{{ $mixingconcrete->created_at }}</td>
                                                         <td>x</td>
                                                         <td>{{ $mixingconcrete->marke }}</td>

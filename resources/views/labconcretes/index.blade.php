@@ -53,10 +53,10 @@
         //     'aprasas' => 'Maišymo Data',
         // ],
         [
-            'label' => 'Marke',
+            'label' => 'Markė',
             'type' => 'text',
             'name' => 'marke',
-            'aprasas' => 'Betono Marke',
+            'aprasas' => 'Betono Markė',
         ],
         [
             'label' => 'Slankumas',
@@ -404,7 +404,7 @@
     
         <div class="col-md-12 mb-4 maisimo_duonbaze">
             <div class="card" style="background-color: #fffd">
-                <div class="card-header">Betono labaratojija</div>
+                <div class="card-header">Betono labaratorija</div>
 
                     <table>
                         <thead>
@@ -417,58 +417,62 @@
                         <tbody>
                             @forelse ($labconcretes as $labconcrete)
                             @php
+                            $fck = substr($labconcrete->mixingconcrete->marke, -2);
+                            $fuc = (int)$fck;
                             $bandinioPlotas = $labconcrete->plotis_mm * $labconcrete->ilgis_mm;
-                            $pavedimoKoficientas = [];
-                            if ( $labconcrete->plotis_mm < 125) {
-                                return $pavedimoKoficientas = '0,95';
-                            // } else {
-                            //     return $pavedimoKoficientas = '1';
-                            };
-                            $bandinioTuris = $labconcrete->plotis_mm * $labconcrete->ilgis_mm * $labconcrete->aukstis_mm / 1000;
-                            $bandinioStipris = $labconcrete->ardancioji_jega_kn / $bandinioPlotas;
+                            $bandinioTuris = $bandinioPlotas * $labconcrete->aukstis_mm / 1000;
+                            $pavedimoKoficientas = ($labconcrete->plotis_mm < 125) ? 0.95 : 1;
+                            $bandinioStiprisGniuzdant = number_format($labconcrete->ardancioji_jega_kn / $bandinioPlotas * $pavedimoKoficientas * 1000, 2);
+                            $vidutinisSerijosStiprisGiuzdant = ($labconcrete->plotis_mm < 125) ?($labconcrete->plotis_mm == $labconcrete->plotis_mm) ?1 :'' :number_format($bandinioStiprisGniuzdant, 2);
+                            $kriterijusV1 = ($fuc - 4);
+                            $paliginimas1 = ($vidutinisSerijosStiprisGiuzdant !== '') ?($vidutinisSerijosStiprisGiuzdant >= $kriterijusV1) ?'≥' :'<' :'';
+                            $fcm3 = ($vidutinisSerijosStiprisGiuzdant + $vidutinisSerijosStiprisGiuzdant + $vidutinisSerijosStiprisGiuzdant) / 3;
+                            $kriterijusV2 = ($fuc + 4);
+                            $paliginimas2 = ($fcm3 !== '') ?($fcm3 >= $kriterijusV2) ?'≥' :'<' :'';
+                            $sigma35 = 1;
+                            $fcm = $bandinioStiprisGniuzdant;
+                            $sigma148 = ($fuc + 1.48 * $sigma35);
+                            $paliginimas3 = ($fcm !== '') ?($fcm >= $sigma148) ?'≥' :'<' :'';
+                            $vidKvadNuokripis036 = (0.36 * $sigma35);
+                            $vidKvadNuokripis137 = (1.37 * $sigma35);
                             @endphp
                                 <tr>
                                     {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ $mixingconcrete->id }}" placeholder="" name="mixing_concrete_id"></div> --}}
                                     {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="delete"></div> --}}
-                                    <td>{{ $labconcrete->user_maise_id }}</td>
-                                    {{-- <td>{{ $labconcrete->mixingconcrete->created_at }}</td> --}}
-                                    <td>Marke</td>
-                                    <td>Slankumas</td>
-                                    {{-- <td>{{ $labconcrete->mixingconcrete->marke }}</td> --}}
-                                    {{-- <td>{{ $labconcrete->mixingconcrete->slankumo_klase }}</td> --}}
+                                    {{-- <td>{{ $labconcrete->user_maise_id }}</td> --}}
+                                    <td>{{ $labconcrete->mixingconcrete->created_at }}</td>
+                                    <td>{{ $labconcrete->mixingconcrete->marke }}</td>
+                                    <td>{{ $labconcrete->mixingconcrete->slankumo_klase }}</td>
                                     <td>{{ $labconcrete->slankumas_mm }}</td>
-                                    <td>XF</td>
-                                    <td>maisikle</td>
-                                    <td>nr</td>
-                                    {{-- <td>{{ $labconcrete->mixingconcrete->salcio_priedai }}</td>
+                                    <td>{{ $labconcrete->mixingconcrete->salcio_priedai }}</td>
                                     <td>{{ $labconcrete->mixingconcrete->maisykle }}</td>
-                                    <td>{{ $labconcrete->mixingconcrete->uzsakymo_nr }}</td> --}}
+                                    <td>{{ $labconcrete->mixingconcrete->uzsakymo_nr }}</td>
                                     <td>{{ $labconcrete->plotis_mm }}</td>
                                     <td>{{ $labconcrete->ilgis_mm }}</td>
                                     <td>{{ $labconcrete->aukstis_mm }}</td>
                                     <td style="background-color: #bbb">{{ $bandinioPlotas }}</td>
                                     <td>{{ $labconcrete->ardancioji_jega_kn }}</td>
                                     <td style="background-color: #bbb">@if ( $labconcrete->plotis_mm < 125) 0,95 @else 1  @endif</td>
-                                    <td>{{ $bandinioStipris }} * (@if ( $labconcrete->plotis_mm < 125) 0,95 @else 1  @endif) * 1000</td>
+                                    <td>{{ $bandinioStiprisGniuzdant }}</td>
+                                    <td>{{ $vidutinisSerijosStiprisGiuzdant }}</td>
+                                    <td style="background-color: {{ $paliginimas1 == '≥' ?'default-color' :'#f66'}}">{{ $paliginimas1 }}</td>
+                                    <td>{{ $kriterijusV1 }}</td>
+                                    <td>{{ $fcm3 }}</td>
+                                    <td style="background-color: {{ $paliginimas2 == '≥' ?'default-color' :'#f66'}}">{{ $paliginimas2 }}</td>
+                                    <td>{{ $kriterijusV2 }}</td>
+                                    <td>{{ $fcm }}</td>
+                                    <td style="background-color: {{ $paliginimas3 == '≥' ?'default-color' :'#f66'}}">{{ $paliginimas3 }}</td>
+                                    <td>{{ $sigma148 }}</td>
+                                    <td>{{ $sigma35 }}</td>
+                                    <td>{{ $vidKvadNuokripis036 }}</td>
                                     <td>x</td>
-                                    <td>x</td>
-                                    <td>></td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
+                                    <td>{{ $vidKvadNuokripis137 }}</td>
                                     <td>{{ $labconcrete->bandinio_mase_g }}</td>
                                     <td>{{ $bandinioTuris }}</td>
-                                    <td>{{ $labconcrete->bandinio_mase_g / $bandinioTuris }}</td>
+                                    <td>{{ number_format($labconcrete->bandinio_mase_g / $bandinioTuris, 2) }}</td>
                                     <td>x</td>
-                                    <td>x</td>
-                                    <td>x</td>
+                                    <td>{{ $fck }}</td>
+                                    <td>{{ $labconcrete->mixingconcrete->komentaras }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
