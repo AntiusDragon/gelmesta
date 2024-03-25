@@ -532,6 +532,27 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const fields = document.querySelectorAll('.form-control'); // Rinkiami visi formos laukeliai
+
+        fields.forEach((field, index) => {
+            field.addEventListener('keydown', function (event) {
+                if (event.key === 'ArrowLeft') { // Jei paspaustas kairysis rodyklės klavišas
+                    if (index > 0) { // Tikrinama, ar nesame pirmame laukelyje
+                        fields[index - 1].focus(); // Perkeliamas fokusas į ankstesnį laukelį
+                        event.preventDefault(); // Sustabdomas įprastas naršyklės elgsena
+                    }
+                } else if (event.key === 'ArrowRight') { // Jei paspaustas dešinysis rodyklės klavišas
+                    if (index < fields.length - 1) { // Tikrinama, ar nesame paskutiniame laukelyje
+                        fields[index + 1].focus(); // Perkeliamas fokusas į kitą laukelį
+                        event.preventDefault(); // Sustabdomas įprastas naršyklės elgsena
+                    }
+                }
+            });
+        });
+    });
+</script>
 @endsection
 
 @section('title', 'Betono maišymas')

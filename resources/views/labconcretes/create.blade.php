@@ -522,17 +522,82 @@
                             @if (($mixingconcrete->delete === 0 
                                 && preg_match('/^G/', $mixingconcrete->uzsakymo_nr) 
                                 && $mixingconcrete->pagaminti_kubeliai_g > 0 
-                                && count($mixingconcrete->labconcrete->where('mixing_concrete_id', $mixingconcrete->id)) > 0))
+                                && count($mixingconcrete->labconcrete->where('mixing_concrete_id', $mixingconcrete->id)) >= 0))
                                     @php
                                         $existingCubesCount = $mixingconcrete->labconcrete()->where('pagaminti_kubeliai_g', $mixingconcrete->pagaminti_kubeliai_g)->count();
                                         $missingCubesCount = $mixingconcrete->pagaminti_kubeliai_g - $existingCubesCount;
+                                        $color = 'red';
+                                        $lastFixedDate = $mixingconcrete->created_at;
+                                        $today = now();
+                                        $daysSinceLastFixed = $today->diffInDays($lastFixedDate);
+                                        if ($daysSinceLastFixed > 28) {
+                                            $color = '#fff0';
+                                        } elseif ($daysSinceLastFixed == 27) {
+                                            $color = 'yellow';
+                                        }
                                     @endphp
                                 @if ($missingCubesCount > 0)
                                 @for ($i = 0; $i < $missingCubesCount; $i++)
                                     {{-- @foreach ($labconcretes as $labconcrete)
                                         @if ($mixingconcrete->id != $labconcretes->mixing_concrete_id) --}}
+                                        @if ($color == 'red')
+                                            <table style="background-color: {{$color}}">
+                                                <thead>
+                                                    <tr>
+                                                        <th colspan="34">Prie gaminio</th>
+                                                    </tr>
+                                                    <tr>
+                                                        @foreach ($kubeliuBandimoZurnalasi1 as $kubeliuBandimoZurnalas1)
+                                                        <th>{{ $kubeliuBandimoZurnalas1['label'] }}</th>
+                                                        @endforeach
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ $mixingconcrete->id }}" placeholder="" name="mixing_concrete_id"></div>
+                                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ $mixingconcrete->pagaminti_kubeliai_g }}" placeholder="" name="pagaminti_kubeliai_g"></div>
+                                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="" placeholder="" name="pagaminti_kubeliai_p"></div>
+                                                        {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="delete"></div> --}}
+                                                        <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ Auth::user()->id }}" placeholder="" name="user_id"></div>
+                                                        <td>{{ $mixingconcrete->created_at }}</td>
+                                                        <td>{{ $mixingconcrete->marke }}</td>
+                                                        <td>{{ $mixingconcrete->slankumo_klase }}</td>
+                                                        <td></td>
+                                                        <td>{{ $mixingconcrete->salcio_priedai }}</td>
+                                                        <td>{{ $mixingconcrete->maisykle }}</td>
+                                                        <td>{{ $mixingconcrete->uzsakymo_nr }}</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>x</td>
+                                                        <td></td>
+                                                        <td>x</td>
+                                                        <td>x</td>
+                                                        <td>x</td>
+                                                        <td></td>
+                                                        <td>x</td>
+                                                        <td>x</td>
+                                                        <td>x</td>
+                                                        <td>x</td>
+                                                        <td>x</td>
+                                                        <td>x</td>
+                                                        <td>x</td>
+                                                        <td>x</td>
+                                                        <td>x</td>
+                                                        <td>x</td>
+                                                        <td>x</td>
+                                                        <td>x</td>
+                                                        <td>x</td>
+                                                        <td>x</td>
+                                                        <td>x</td>
+                                                        <td>x</td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        @else
                                             <form action="{{route('labconcretes-store')}}" method="post">
-                                                <table>
+                                                <table style="background-color: {{$color}}">
                                                     <thead>
                                                         <tr>
                                                             <th colspan="34">Prie gaminio</th>
@@ -595,6 +660,7 @@
                                                     </tbody>
                                                 </table>
                                             </form>
+                                        @endif
                                         {{-- @endif
                                     @endforeach --}}
                                 @endfor
@@ -603,15 +669,80 @@
                             
                             @if (($mixingconcrete->delete === 0 
                                 && $mixingconcrete->pagaminti_kubeliai_p > 0 
-                                && count($mixingconcrete->labconcrete->where('pagaminti_kubeliai_p', $mixingconcrete->pagaminti_kubeliai_p)) > 0))
+                                && count($mixingconcrete->labconcrete->where('pagaminti_kubeliai_p', $mixingconcrete->pagaminti_kubeliai_p)) >= 0))
                                     @php
                                         $existingCubesCount = $mixingconcrete->labconcrete()->where('pagaminti_kubeliai_p', $mixingconcrete->pagaminti_kubeliai_p)->count();
                                         $missingCubesCount = $mixingconcrete->pagaminti_kubeliai_p - $existingCubesCount;
+                                        $color = 'red';
+                                        $lastFixedDate = $mixingconcrete->created_at;
+                                        $today = now();
+                                        $daysSinceLastFixed = $today->diffInDays($lastFixedDate);
+                                        if ($daysSinceLastFixed > 28) {
+                                            $color = '#fff0';
+                                        } elseif ($daysSinceLastFixed == 27) {
+                                            $color = 'yellow';
+                                        }
                                     @endphp
                                 @if ($missingCubesCount > 0)
                                 @for ($i = 0; $i < $missingCubesCount; $i++)
+                                @if ($color == 'red')
+                                    <table style="background-color: {{$color}}">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="34">Vandenije</th>
+                                            </tr>
+                                            <tr>
+                                                @foreach ($kubeliuBandimoZurnalasi1 as $kubeliuBandimoZurnalas1)
+                                                <th>{{ $kubeliuBandimoZurnalas1['label'] }}</th>
+                                                @endforeach
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ $mixingconcrete->id }}" placeholder="" name="mixing_concrete_id"></div>
+                                                <div class="form-group mb-3"><input type="hidden" class="form-control" value="" placeholder="" name="pagaminti_kubeliai_g"></div>
+                                                <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ $mixingconcrete->pagaminti_kubeliai_p }}" placeholder="" name="pagaminti_kubeliai_p"></div>
+                                                {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="delete"></div> --}}
+                                                <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ Auth::user()->id }}" placeholder="" name="user_id"></div>
+                                                <td>{{ $mixingconcrete->created_at }}</td>
+                                                <td>{{ $mixingconcrete->marke }}</td>
+                                                <td>{{ $mixingconcrete->slankumo_klase }}</td>
+                                                <td></td>
+                                                <td>{{ $mixingconcrete->salcio_priedai }}</td>
+                                                <td>{{ $mixingconcrete->maisykle }}</td>
+                                                <td>{{ $mixingconcrete->uzsakymo_nr }}</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>x</td>
+                                                <td></td>
+                                                <td>x</td>
+                                                <td>x</td>
+                                                <td>x</td>
+                                                <td></td>
+                                                <td>x</td>
+                                                <td>x</td>
+                                                <td>x</td>
+                                                <td>x</td>
+                                                <td>x</td>
+                                                <td>x</td>
+                                                <td>x</td>
+                                                <td>x</td>
+                                                <td>x</td>
+                                                <td>x</td>
+                                                <td>x</td>
+                                                <td>x</td>
+                                                <td>x</td>
+                                                <td>x</td>
+                                                <td>x</td>
+                                                <td>x</td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                @else
                                     <form action="{{route('labconcretes-store')}}" method="post">
-                                        <table>
+                                        <table style="background-color: {{$color}}">
                                             <thead>
                                                 <tr>
                                                     <th colspan="34">Vandenije</th>
@@ -674,6 +805,7 @@
                                             </tbody>
                                         </table>
                                     </form>
+                                @endif
                                 @endfor
                                 @endif
                             @endif
