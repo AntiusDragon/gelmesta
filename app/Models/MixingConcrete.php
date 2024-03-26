@@ -30,6 +30,7 @@ class MixingConcrete extends Model
         'uzsakovas',
         'komentaras',
         // 'user_id',
+        'created_at',
     ];
 
     public function labConcrete()

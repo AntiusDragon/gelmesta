@@ -4,6 +4,12 @@
     @section('content')
     @php
     $createMixingConcretesFormos1 = [
+        [
+            'label' => 'Maišymo data',
+            'type' => 'text',
+            'name' => 'created_at',
+            'aprasas' => 'Maišymo data',
+        ],
         // [
         //     'label' => 'Delete',
         //     'type' => 'hidden',
@@ -100,12 +106,12 @@
             'name' => 'uzsakymo_nr',
             'aprasas' => 'Užsakymo Indentifikacijos numeris',
         ],
-        // [
-        //     'label' => 'Bukle',
-        //     'type' => 'text',
-        //     'name' => '	uzsakymo_raide',
-        //     'aprasas' => 'Užsakymo indexas',
-        // ],
+        [
+            'label' => 'Bukle',
+            'type' => 'text',
+            'name' => '	uzsakymo_raide',
+            'aprasas' => 'Užsakymo indexas',
+        ],
         [
             'label' => 'Užsakovas',
             'type' => 'text',
@@ -232,6 +238,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td class="form-group mb-3"><input type="text" class="form-control" value="{{$mixingconcrete->created_at}}" placeholder="Maišykles ID" name="created_at"></td>
                                         <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="delete"></div>
                                         <td class="form-group mb-3"><input type="text" class="form-control" value="{{$mixingconcrete->maisikles_id}}" placeholder="Maišykles ID" name="maisikles_id"></td>
                                         <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="maisikles_recepto_id"></div>
@@ -246,6 +253,7 @@
                                         <td class="form-group mb-3"><input type="text" class="form-control" value="{{$mixingconcrete->maisykle}}" placeholder="Maišyklė" name="maisykle"></td>
                                         <td class="form-group mb-3"><input type="text" class="form-control" value="{{$mixingconcrete->kiekis_m3}}" placeholder="Kiekis, m3" name="kiekis_m3"></td>
                                         <td class="form-group mb-3"><input type="text" class="form-control" value="{{$mixingconcrete->uzsakymo_nr}}" placeholder="Užsakymo Nr" name="uzsakymo_nr"></td>
+                                        <td class="form-group mb-3"><input type="text" class="form-control" value="{{$mixingconcrete->uzsakymo_raide}}" placeholder="Užsakymo Nr" name="uzsakymo_raide"></td>
                                         <td class="form-group mb-3"><input type="text" class="form-control" value="{{$mixingconcrete->uzsakovas}}" placeholder="Užsakovas" name="uzsakovas"></td>
                                         <td class="form-group mb-3"><input type="text" class="form-control" value="{{$mixingconcrete->komentaras}}" placeholder="Komentaras" name="komentaras"></td>
                                     </tr>

@@ -421,27 +421,46 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($labconcretes as $labconcrete)
                             @php
-                            $pagamintiKubeliai = ($labconcrete->pagaminti_kubeliai_g > 0) ?'Prie gaminio' :'Vandenije';
-                            $fck = substr($labconcrete->mixingconcrete->marke, -2);
-                            $fuc = (int)$fck;
-                            $bandinioPlotas = $labconcrete->plotis_mm * $labconcrete->ilgis_mm;
-                            $bandinioTuris = $bandinioPlotas * $labconcrete->aukstis_mm / 1000;
-                            $pavedimoKoficientas = ($labconcrete->plotis_mm < 125) ? 0.95 : 1;
-                            $bandinioStiprisGniuzdant = number_format($labconcrete->ardancioji_jega_kn / $bandinioPlotas * $pavedimoKoficientas * 1000, 2);
-                            $vidutinisSerijosStiprisGiuzdant = ($labconcrete->plotis_mm < 125) ?($labconcrete->plotis_mm == $labconcrete->plotis_mm) ?1 :'' :number_format($bandinioStiprisGniuzdant, 2);
-                            $kriterijusV1 = ($fuc - 4);
-                            $paliginimas1 = ($vidutinisSerijosStiprisGiuzdant !== '') ?($vidutinisSerijosStiprisGiuzdant >= $kriterijusV1) ?'≥' :'<' :'';
-                            $fcm3 = ($vidutinisSerijosStiprisGiuzdant + $vidutinisSerijosStiprisGiuzdant + $vidutinisSerijosStiprisGiuzdant) / 3;
-                            $kriterijusV2 = ($fuc + 4);
-                            $paliginimas2 = ($fcm3 !== '') ?($fcm3 >= $kriterijusV2) ?'≥' :'<' :'';
-                            $sigma35 = 1;
-                            $fcm = $bandinioStiprisGniuzdant;
-                            $sigma148 = ($fuc + 1.48 * $sigma35);
-                            $paliginimas3 = ($fcm !== '') ?($fcm >= $sigma148) ?'≥' :'<' :'';
-                            $vidKvadNuokripis036 = (0.36 * $sigma35);
-                            $vidKvadNuokripis137 = (1.37 * $sigma35);
+                                $vidutinisSerijosStiprisGiuzdant = '';
+                                $bandinioStiprioMasyvas = [];
+                                $bandinioMarkeMasyvas = [];
+                            @endphp
+                            @forelse ($labconcretes as $index => $labconcrete)
+                            @php
+                                $bandinioMarke = $labconcrete->mixingconcrete->marke;
+
+                                $pagamintiKubeliai = ($labconcrete->pagaminti_kubeliai_g > 0) ?'Prie gaminio' :'Vandenije';
+                                $fck = substr($labconcrete->mixingconcrete->marke, -2);
+                                $fuc = (int)$fck;
+                                $bandinioPlotas = $labconcrete->plotis_mm * $labconcrete->ilgis_mm;
+                                $bandinioTuris = $bandinioPlotas * $labconcrete->aukstis_mm / 1000;
+                                $pavedimoKoficientas = ($labconcrete->plotis_mm < 125) ? 0.95 : 1;
+                                $bandinioStiprisGniuzdant = number_format($labconcrete->ardancioji_jega_kn / $bandinioPlotas * $pavedimoKoficientas * 1000, 2);
+                                
+                                $bandinioStiprioMasyvas[] = $bandinioStiprisGniuzdant;
+                                $bandinioMarkeMasyvas[] = $bandinioMarke;
+                                $vidutinisSerijosStiprisGiuzdant = 0;
+                                if ($labconcrete->plotis_mm > 125) {
+                                    // Tikrinimas, ar šis yra trečias elementas ar vėlesnis
+                                    $vidutinisSerijosStiprisGiuzdant = ($index == 0) ? $bandinioStiprisGniuzdant : number_format(($bandinioStiprisGniuzdant + $bandinioStiprioMasyvas[$index - 1]) / 2, 2);
+                                } elseif ($bandinioMarke == $bandinioMarkeMasyvas[$index - 1]) {
+                                    $vidutinisSerijosStiprisGiuzdant = 1;
+                                    // $vidutinisSerijosStiprisGiuzdant = ($index == 0) ? $bandinioStiprisGniuzdant : number_format(($bandinioStiprisGniuzdant + $bandinioStiprioMasyvas[$index - 1]) / 2, 2);
+                                }
+
+                                // $vidutinisSerijosStiprisGiuzdant = ($labconcrete->plotis_mm < 125) ?($labconcrete->plotis_mm == $labconcrete->plotis_mm) ?1 :'' :number_format($bandinioStiprisGniuzdant, 2);
+                                $kriterijusV1 = ($fuc - 4);
+                                $paliginimas1 = ($vidutinisSerijosStiprisGiuzdant !== '') ?($vidutinisSerijosStiprisGiuzdant >= $kriterijusV1) ?'≥' :'<' :'';
+                                $fcm3 = ($vidutinisSerijosStiprisGiuzdant + $vidutinisSerijosStiprisGiuzdant + $vidutinisSerijosStiprisGiuzdant) / 3;
+                                $kriterijusV2 = ($fuc + 4);
+                                $paliginimas2 = ($fcm3 !== '') ?($fcm3 >= $kriterijusV2) ?'≥' :'<' :'';
+                                $sigma35 = 1;
+                                $fcm = $bandinioStiprisGniuzdant;
+                                $sigma148 = ($fuc + 1.48 * $sigma35);
+                                $paliginimas3 = ($fcm !== '') ?($fcm >= $sigma148) ?'≥' :'<' :'';
+                                $vidKvadNuokripis036 = (0.36 * $sigma35);
+                                $vidKvadNuokripis137 = (1.37 * $sigma35);
                             @endphp
                                 <tr>
                                     {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ $mixingconcrete->id }}" placeholder="" name="mixing_concrete_id"></div> --}}

@@ -314,132 +314,132 @@
             'name' => 'aukstis_mm',
             'aprasas' => 'Bandinio aukštis, mm',
         ],
-        [
-            'label' => 'Bandinio plotas, mm2',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => 'Bandinio plotas, mm2',
-        ],
+        // [
+        //     'label' => 'Bandinio plotas, mm2',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => 'Bandinio plotas, mm2',
+        // ],
         [
             'label' => 'Bandinio masė, g',
             'type' => 'text',
             'name' => '',
             'aprasas' => '',
         ],
-        [
-            'label' => 'Bandinio tūris, cm3',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => '',
-        ],
-        [
-            'label' => 'Bandinio tankis, g/cm3',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => '',
-        ],
-        [
-            'label' => 'Vidutinis serijos tankis, kg/m3',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => '',
-        ],
+        // [
+        //     'label' => 'Bandinio tūris, cm3',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => '',
+        // ],
+        // [
+        //     'label' => 'Bandinio tankis, g/cm3',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => '',
+        // ],
+        // [
+        //     'label' => 'Vidutinis serijos tankis, kg/m3',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => '',
+        // ],
         [
             'label' => 'Ardančioji jėga, kN',
             'type' => 'text',
             'name' => 'ardancioji_jega_kn',
             'aprasas' => 'Ardančioji jėga, kN',
         ],
-        [
-            'label' => 'Pervedimo koeficientas',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => 'Pervedimo koeficientas',
-        ],
-        [
-            'label' => 'Bandinio stipris gniuždant, N/mm2',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => 'Bandinio stipris gniuždant, N/mm2',
-        ],
-        [
-            'label' => 'Vidutinis serijos stipris gniuždant, N/mm2',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => 'Vidutinis serijos stipris gniuždant, N/mm2',
-        ],
-        [
-            'label' => '>f(ck) -4',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => '>f(ck) -4',
-        ],
-        [
-            'label' => 'f(ck) -4',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => '8.2.1.3.1 Atskirų rezultatų kriterijus. Taikomas ir pradinės ir nuolatinės gamybos metu. Reikalavimas atskiro (pavienio) bandymo rerzultatui fci ≥ (fck-4) N/mm².',
-        ],
-        [
-            'label' => 'fcm,3',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => '8.2.1.3.2. A metodas. Pradinė gamyba. (2) persidengiančių ar nepersidengiančių rezultatų trejeto vidurkis t. b. ≥ [+4 MPa]. Pateikti paskutinių rezultatų trejeto vidurkiai (ir persidengia ir nepersidengia).',
-        ],
-        [
-            'label' => '>f(ck)+4',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => '>f(ck)+4',
-        ],
-        [
-            'label' => 'f(ck)+4',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => '8.2.1.3.2 Vidutinių rezultatų kriterijus. A metodas. Pradinė gamyba. Reikalavimas rezultatų trejeto vidurkiui fcm,3 ≥ (fck + 4) N/mm²',
-        ],
-        [
-            'label' => 'f(cm)',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => '',
-        ],
-        [
-            'label' => '>',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => '',
-        ],
-        [
-            'label' => 'f(ck)+1,48*sigma',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => '',
-        ],
-        [
-            'label' => 'σ35',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => 'Tikrina 15-os paskutinių rezultatų standartinį nuokrypį gavus kiekvieną naują gniuždymo stiprio rezultatą. Jeigu jis telpa į ribas 0,63·σ(35 ar 3 mėn.) ≤ s15 ≤ 1,37·σ(35 ar 3 mėn), lieka tas pats "senas" standartinis nuokrypis iš 35 pirmųjų rezultatų ar 3 mėn. (kas daugiau), ar, kai netenkino paskutinį kartą, suskaičiuotas iš paskutiniųjų 35 rezultatų.',
-        ],
-        [
-            'label' => '0.63* vid. Kvadr. Nuokrypis',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => '',
-        ],
-        [
-            'label' => 'S15',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => 'Skaičiuoja paskutiniųjų 15 rezultatų standartinį nuokrypį s15',
-        ],
-        [
-            'label' => '1.37* vid. Kvadr. Nuokrypis',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => '',
-        ],
+        // [
+        //     'label' => 'Pervedimo koeficientas',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => 'Pervedimo koeficientas',
+        // ],
+        // [
+        //     'label' => 'Bandinio stipris gniuždant, N/mm2',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => 'Bandinio stipris gniuždant, N/mm2',
+        // ],
+        // [
+        //     'label' => 'Vidutinis serijos stipris gniuždant, N/mm2',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => 'Vidutinis serijos stipris gniuždant, N/mm2',
+        // ],
+        // [
+        //     'label' => '>f(ck) -4',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => '>f(ck) -4',
+        // ],
+        // [
+        //     'label' => 'f(ck) -4',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => '8.2.1.3.1 Atskirų rezultatų kriterijus. Taikomas ir pradinės ir nuolatinės gamybos metu. Reikalavimas atskiro (pavienio) bandymo rerzultatui fci ≥ (fck-4) N/mm².',
+        // ],
+        // [
+        //     'label' => 'fcm,3',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => '8.2.1.3.2. A metodas. Pradinė gamyba. (2) persidengiančių ar nepersidengiančių rezultatų trejeto vidurkis t. b. ≥ [+4 MPa]. Pateikti paskutinių rezultatų trejeto vidurkiai (ir persidengia ir nepersidengia).',
+        // ],
+        // [
+        //     'label' => '>f(ck)+4',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => '>f(ck)+4',
+        // ],
+        // [
+        //     'label' => 'f(ck)+4',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => '8.2.1.3.2 Vidutinių rezultatų kriterijus. A metodas. Pradinė gamyba. Reikalavimas rezultatų trejeto vidurkiui fcm,3 ≥ (fck + 4) N/mm²',
+        // ],
+        // [
+        //     'label' => 'f(cm)',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => '',
+        // ],
+        // [
+        //     'label' => '>',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => '',
+        // ],
+        // [
+        //     'label' => 'f(ck)+1,48*sigma',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => '',
+        // ],
+        // [
+        //     'label' => 'σ35',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => 'Tikrina 15-os paskutinių rezultatų standartinį nuokrypį gavus kiekvieną naują gniuždymo stiprio rezultatą. Jeigu jis telpa į ribas 0,63·σ(35 ar 3 mėn.) ≤ s15 ≤ 1,37·σ(35 ar 3 mėn), lieka tas pats "senas" standartinis nuokrypis iš 35 pirmųjų rezultatų ar 3 mėn. (kas daugiau), ar, kai netenkino paskutinį kartą, suskaičiuotas iš paskutiniųjų 35 rezultatų.',
+        // ],
+        // [
+        //     'label' => '0.63* vid. Kvadr. Nuokrypis',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => '',
+        // ],
+        // [
+        //     'label' => 'S15',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => 'Skaičiuoja paskutiniųjų 15 rezultatų standartinį nuokrypį s15',
+        // ],
+        // [
+        //     'label' => '1.37* vid. Kvadr. Nuokrypis',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => '',
+        // ],
         // [
         //     'label' => 'sum(fci-fcm)^2 ',
         //     'type' => 'text',
@@ -452,12 +452,12 @@
         //     'name' => '',
         //     'aprasas' => '',
         // ],
-        [
-            'label' => 'FCK',
-            'type' => 'text',
-            'name' => '',
-            'aprasas' => '',
-        ],
+        // [
+        //     'label' => 'FCK',
+        //     'type' => 'text',
+        //     'name' => '',
+        //     'aprasas' => '',
+        // ],
         [
             'label' => 'Aprašas',
             'type' => 'text',
@@ -530,7 +530,7 @@
                                         $lastFixedDate = $mixingconcrete->created_at;
                                         $today = now();
                                         $daysSinceLastFixed = $today->diffInDays($lastFixedDate);
-                                        if ($daysSinceLastFixed > 28) {
+                                        if ($daysSinceLastFixed >= 28) {
                                             $color = '#fff0';
                                         } elseif ($daysSinceLastFixed == 27) {
                                             $color = 'yellow';
@@ -540,11 +540,11 @@
                                 @for ($i = 0; $i < $missingCubesCount; $i++)
                                     {{-- @foreach ($labconcretes as $labconcrete)
                                         @if ($mixingconcrete->id != $labconcretes->mixing_concrete_id) --}}
-                                        @if ($color == 'red')
+                                        @if ($color == 'red' || $color == 'yellow')
                                             <table style="background-color: {{$color}}">
                                                 <thead>
                                                     <tr>
-                                                        <th colspan="34">Prie gaminio</th>
+                                                        <th colspan="34">Prie gaminio (praėjo {{ $daysSinceLastFixed }} d.)</th>
                                                     </tr>
                                                     <tr>
                                                         @foreach ($kubeliuBandimoZurnalasi1 as $kubeliuBandimoZurnalas1)
@@ -569,28 +569,8 @@
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>
-                                                        <td>x</td>
                                                         <td></td>
-                                                        <td>x</td>
-                                                        <td>x</td>
-                                                        <td>x</td>
                                                         <td></td>
-                                                        <td>x</td>
-                                                        <td>x</td>
-                                                        <td>x</td>
-                                                        <td>x</td>
-                                                        <td>x</td>
-                                                        <td>x</td>
-                                                        <td>x</td>
-                                                        <td>x</td>
-                                                        <td>x</td>
-                                                        <td>x</td>
-                                                        <td>x</td>
-                                                        <td>x</td>
-                                                        <td>x</td>
-                                                        <td>x</td>
-                                                        <td>x</td>
-                                                        <td>x</td>
                                                         <td></td>
                                                     </tr>
                                                 </tbody>
@@ -600,7 +580,7 @@
                                                 <table style="background-color: {{$color}}">
                                                     <thead>
                                                         <tr>
-                                                            <th colspan="34">Prie gaminio</th>
+                                                            <th colspan="34">Prie gaminio (praėjo {{ $daysSinceLastFixed }} d.)</th>
                                                         </tr>
                                                         <tr>
                                                             @foreach ($kubeliuBandimoZurnalasi1 as $kubeliuBandimoZurnalas1)
@@ -625,28 +605,8 @@
                                                             <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Bandinio plotis, mm" name="plotis_mm"></td>
                                                             <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Bandinio ilgis, mm" name="ilgis_mm"></td>
                                                             <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Bandinio aukštis, mm" name="aukstis_mm"></td>
-                                                            <td>x</td>
                                                             <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Bandinio masė, g" name="bandinio_mase_g"></td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
                                                             <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Ardančioji jėga, kN" name="ardancioji_jega_kn"></td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
                                                             <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Aprašas" name="aprasas"></td>
                                                         </tr>
                                                         <tr>
@@ -685,11 +645,11 @@
                                     @endphp
                                 @if ($missingCubesCount > 0)
                                 @for ($i = 0; $i < $missingCubesCount; $i++)
-                                @if ($color == 'red')
+                                @if ($color == 'red' || $color == 'yellow')
                                     <table style="background-color: {{$color}}">
                                         <thead>
                                             <tr>
-                                                <th colspan="34">Vandenije</th>
+                                                <th colspan="34">Vandenije (praėjo {{ $daysSinceLastFixed }} d.)</th>
                                             </tr>
                                             <tr>
                                                 @foreach ($kubeliuBandimoZurnalasi1 as $kubeliuBandimoZurnalas1)
@@ -714,28 +674,8 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
-                                                <td>x</td>
                                                 <td></td>
-                                                <td>x</td>
-                                                <td>x</td>
-                                                <td>x</td>
                                                 <td></td>
-                                                <td>x</td>
-                                                <td>x</td>
-                                                <td>x</td>
-                                                <td>x</td>
-                                                <td>x</td>
-                                                <td>x</td>
-                                                <td>x</td>
-                                                <td>x</td>
-                                                <td>x</td>
-                                                <td>x</td>
-                                                <td>x</td>
-                                                <td>x</td>
-                                                <td>x</td>
-                                                <td>x</td>
-                                                <td>x</td>
-                                                <td>x</td>
                                                 <td></td>
                                             </tr>
                                         </tbody>
@@ -745,7 +685,7 @@
                                         <table style="background-color: {{$color}}">
                                             <thead>
                                                 <tr>
-                                                    <th colspan="34">Vandenije</th>
+                                                    <th colspan="34">Vandenije (praėjo {{ $daysSinceLastFixed }} d.)</th>
                                                 </tr>
                                                 <tr>
                                                     @foreach ($kubeliuBandimoZurnalasi1 as $kubeliuBandimoZurnalas1)
@@ -770,28 +710,8 @@
                                                     <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Bandinio plotis, mm" name="plotis_mm"></td>
                                                     <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Bandinio ilgis, mm" name="ilgis_mm"></td>
                                                     <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Bandinio aukštis, mm" name="aukstis_mm"></td>
-                                                    <td>x</td>
                                                     <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Bandinio masė, g" name="bandinio_mase_g"></td>
-                                                    <td>x</td>
-                                                    <td>x</td>
-                                                    <td>x</td>
                                                     <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Ardančioji jėga, kN" name="ardancioji_jega_kn"></td>
-                                                    <td>x</td>
-                                                    <td>x</td>
-                                                    <td>x</td>
-                                                    <td>x</td>
-                                                    <td>x</td>
-                                                    <td>x</td>
-                                                    <td>x</td>
-                                                    <td>x</td>
-                                                    <td>x</td>
-                                                    <td>x</td>
-                                                    <td>x</td>
-                                                    <td>x</td>
-                                                    <td>x</td>
-                                                    <td>x</td>
-                                                    <td>x</td>
-                                                    <td>x</td>
                                                     <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Aprašas" name="aprasas"></td>
                                                 </tr>
                                                 <tr>
