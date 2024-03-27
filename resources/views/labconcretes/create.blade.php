@@ -637,7 +637,7 @@
                                         $lastFixedDate = $mixingconcrete->created_at;
                                         $today = now();
                                         $daysSinceLastFixed = $today->diffInDays($lastFixedDate);
-                                        if ($daysSinceLastFixed > 28) {
+                                        if ($daysSinceLastFixed >= 28) {
                                             $color = '#fff0';
                                         } elseif ($daysSinceLastFixed == 27) {
                                             $color = 'yellow';

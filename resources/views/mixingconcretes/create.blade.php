@@ -211,6 +211,25 @@
             'salcioPredas' => 'null',
         ],
     ];
+    $zimejimaiBukles = [
+        [
+            'zimejimas' => 'G',
+        ],
+        [
+            'zimejimas' => 'P',
+        ],
+        [
+            'zimejimas' => 'OBJ',
+        ],
+        [
+            'zimejimas' => 'BAZ',
+        ],
+        [
+            'zimejimas' => 'B',
+        ],
+    ];
+
+    $zimejimaiMasivas = [];
     
     $filteredData = [];
     $maxYear = 0;
@@ -235,9 +254,62 @@
     // Nustatome naujausius metus ir savaitės numerius
     $currentYear = $maxYear;
     $currentWeek = $maxWeek;
+    
+    $lastDayRecords = $mixingconcretes->filter(function ($record) {
+        return $record->created_at->isToday();
+    });
     @endphp
     <div class="container">
         <div class="row justify-content-center">
+    
+            <div class="col-md-12 mb-4 pagaminti_kubeliai">
+                <div class="card" style="background-color: #fffd">
+                    <div class="card-header">Šios dienos maiškymo kiekis m3</div>
+
+                    <div class="card-body">
+                        <table>
+                            <thead>
+                                    <tr>
+                                        <th>Žimejimas</th>
+                                        @foreach ($zimejimaiBukles as $zimejimaiBukle)
+                                            @php
+                                                $background_color = '#fff';
+                                                foreach ($lastDayRecords as $mixingconcrete) {
+                                                    if ($mixingconcrete->delete === 0 && $mixingconcrete->uzsakymo_raide == $zimejimaiBukle['zimejimas']) {
+                                                        $background_color = '#0f0';
+                                                        break;
+                                                    }
+                                                }
+                                            @endphp
+                                            <th class="form-group mb-3" style="background-color: {{ $background_color }}">
+                                                {{ $zimejimaiBukle['zimejimas'] }}
+                                            </th>
+                                        @endforeach
+                                    </tr>
+                            </thead>
+        
+                            <tbody>
+                                <tr>
+                                    <td>Kiekis, m3</td>
+                                    @foreach ($zimejimaiBukles as $zimejimaiBukle)
+                                        @php
+                                            $suma = 0;
+                                        @endphp
+                                        @foreach ($lastDayRecords as $mixingconcrete)
+                                            @if ($mixingconcrete->delete === 0 && $mixingconcrete->uzsakymo_raide == $zimejimaiBukle['zimejimas'])
+                                                @php
+                                                    $suma += $mixingconcrete->kiekis_m3;
+                                                @endphp
+                                            @endif
+                                        @endforeach
+                                        <td>{{ $suma }}</td>
+                                    @endforeach
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
     
             <div class="col-md-12 mb-4 pagaminti_kubeliai">
                 <div class="card" style="background-color: #fffd">
@@ -246,40 +318,6 @@
                     <div class="card-body">
                         <table>
                             <thead>
-                                    {{-- @foreach ($pagamintiKubeliai as $pagamintiKubelis)
-                                    <tr>
-                                        <th>{{ $pagamintiKubelis['label'] }}</th>
-                                        @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
-                                            @php
-                                                $background_color = '#fff';
-                                                foreach ($filteredData as $yearWeek => $weekData) {
-                                                    [$year, $week] = explode('-', $yearWeek);
-                                        
-                                                    if ($year == $currentYear && $week == $currentWeek) {
-                                                        foreach ($weekData as $mixingconcrete) {
-                                                            
-                                                            if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match($pagamintiKubelis['bukle'], $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai !== null) {
-                                                                $background_color = 'red';
-                                        
-                                                                foreach ($weekData as $mixingconcrete) {
-                                                                    if ($mixingconcrete->marke === $kubeliuMerkeForma1['label'] && preg_match($pagamintiKubelis['bukle'], $mixingconcrete->uzsakymo_nr) && $mixingconcrete->salcio_priedai !== null && $mixingconcrete->pagaminti_kubeliai > 0) {
-                                                                        $background_color = '#0F0';
-                                                                    }
-                                                                }
-                                        
-                                                                break 2;
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            @endphp
-                                            <th class="form-group mb-3" style="background-color: {{ $background_color }}">
-                                                {{ $kubeliuMerkeForma1['label'] }}
-                                            </th>
-                                        @endforeach
-                                    </tr>
-                                    @endforeach --}}
-        
                                     <tr>
                                         <th>Gamyba+XF/F</th>
                                         @foreach ($kubeliuMerkeFormos1 as $kubeliuMerkeForma1)
@@ -493,9 +531,9 @@
         
                             <tbody>
                                 @php
-                                    $lastDayRecords = $mixingconcretes->filter(function ($record) {
-                                        return $record->created_at->isToday();
-                                    });
+                                    // $lastDayRecords = $mixingconcretes->filter(function ($record) {
+                                    //     return $record->created_at->isToday();
+                                    // });
                                 @endphp
 
                                 @forelse ($lastDayRecords as $mixingconcrete)
