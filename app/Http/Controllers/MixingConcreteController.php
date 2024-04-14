@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\MixingConcrete;
+use App\Models\LabConcrete;
 use App\Http\Requests\StoreMixingConcreteRequest;
 use App\Http\Requests\UpdateMixingConcreteRequest;
+use Illuminate\Http\Request;
 
 class MixingConcreteController extends Controller
 {
@@ -17,23 +19,66 @@ class MixingConcreteController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $mixingconcretes = MixingConcrete::all();
+        // $mixingconcretes = MixingConcrete::orderBy('created_at', 'desc')->get();
+        // $mixingconcretes = MixingConcrete::all()->sortByDesc('created_at');
+
+        $sorts = MixingConcrete::getSorts();
+        $sortBy =$request->query('sort', '');
+        $perPageSelect = MixingConcrete::getPerPageSelect();
+        $perPage = (int) $request->query('per_page', 2);
+
+        $mixingconcretes = MixingConcrete::query();
+
+        $mixingconcretes = match($sortBy) {
+            'created_at_asc' => $mixingconcretes->orderBy('created_at'),
+            'created_at_desc' => $mixingconcretes->orderByDesc('created_at'),
+            default => $mixingconcretes,
+        };
+
+        // $mixingconcretes = $mixingconcretes->get();
+        // $mixingconcretes = $mixingconcretes->paginate($perPage)->withQueryString();
+
+        if ($perPage > 0) {
+            $mixingconcretes = $mixingconcretes->paginate($perPage)->withQueryString();
+        } else {
+            $mixingconcretes = $mixingconcretes->get();
+        }
         
         return view('mixingconcretes.index', [
             'mixingconcretes' => $mixingconcretes,
+            'sorts' => $sorts,
+            'sortBy' => $sortBy,
+            'perPageSelect' => $perPageSelect,
+            'perPage' => $perPage,
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        $mixingconcretes = MixingConcrete::all();
+        // $mixingconcretes = MixingConcrete::all()->sortByDesc('created_at');
+
+        $sorts = MixingConcrete::getSorts();
+        $sortBy =$request->query('sort', '');
+
+        $mixingconcretes = MixingConcrete::query();
+
+        $mixingconcretes = match($sortBy) {
+            'created_at_asc' => $mixingconcretes->orderBy('created_at'),
+            'created_at_desc' => $mixingconcretes->orderByDesc('created_at'),
+            default => $mixingconcretes,
+        };
+
+        $mixingconcretes = $mixingconcretes->get();
+
         return view('mixingconcretes.create', [
             'mixingconcretes' => $mixingconcretes,
+            'sorts' => $sorts,
+            'sortBy' => $sortBy,
         ]);
     }
 
@@ -52,8 +97,13 @@ class MixingConcreteController extends Controller
      */
     public function show(MixingConcrete $mixingconcrete)
     {
+        $labconcretes = LabConcrete::all();
+        $mixingconcretes = MixingConcrete::all();
+
         return view('mixingconcretes.show', [
-            'mixingconcrete' => $mixingconcrete,
+            // 'mixingconcrete' => $mixingconcrete,
+            'labconcretes' => $labconcretes,
+            'mixingconcretes' => $mixingconcretes,
         ]);
     }
 

@@ -131,6 +131,47 @@
             <div class="col-md-12">
                 <div class="card" style="background-color: #fffd">
                     <div class="card-header">Maišymo duomenis</div>
+
+                    <form action="">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="form-group mb-3">
+                                       <label class="m-1">Rūšiavimas</label>
+                                       <select class=" form-select" name="sort">
+                                            @foreach ($sorts as $sortKey => $sortValue)
+                                            <option value="{{ $sortKey }}" 
+                                                @if ($sortBy == $sortKey) selected @endif>
+                                                {{ $sortValue }}</option>
+                                            @endforeach
+                                       </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-2">
+                                    <div class="form-group mb-3">
+                                       <label class="m-1">Rodyti puslapyjė rezultatų</label>
+                                       <select class="form-select" name="per_page">
+                                            @foreach ($perPageSelect as $perPageKey => $perPageValue)
+                                            <option value="{{ $perPageKey }}" 
+                                                @if ($perPage == $perPageKey) selected @endif
+                                                >{{ $perPageValue }}</option>
+                                           @endforeach
+                                       </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-3">
+                                    <div class="form-group mb-3">
+                                        <button type="submit" class="btn btn-primary mt-4">Rodyti</button>
+                                        <a href="{{  route('mixingconcretes-index') }}" 
+                                            class="btn  btn-secondary mt-4 ms-2">Padinis</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
     
                     <div class="card-body">
                         <div>
@@ -180,6 +221,11 @@
                     </div>
                 </div>
             </div>
+            @if ($perPage)
+            <div class="mt-3">  
+                {{ $mixingconcretes->links() }}
+            </div>
+            @endif
         </div>
     </div>
 </div>

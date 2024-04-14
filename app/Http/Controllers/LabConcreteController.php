@@ -6,6 +6,7 @@ use App\Models\LabConcrete;
 use App\Models\MixingConcrete;
 use App\Http\Requests\StoreLabConcreteRequest;
 use App\Http\Requests\UpdateLabConcreteRequest;
+use Illuminate\Http\Request;
 
 class LabConcreteController extends Controller
 {
@@ -21,7 +22,7 @@ class LabConcreteController extends Controller
     {
         // $labconcrete = LabConcrete::where('mixingconcrete_id',  1)->get();
         // dump($labconcrete);
-        $labconcretes = LabConcrete::all();
+        $labconcretes = LabConcrete::all()->sortByDesc('created_at');
         $mixingconcretes = MixingConcrete::all();
         
         return view('labconcretes.index', [

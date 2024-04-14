@@ -258,6 +258,8 @@
     $lastDayRecords = $mixingconcretes->filter(function ($record) {
         return $record->created_at->isToday();
     });
+    
+    $bendrasKiekis = 0;
     @endphp
     <div class="container">
         <div class="row justify-content-center">
@@ -285,6 +287,7 @@
                                                 {{ $zimejimaiBukle['zimejimas'] }}
                                             </th>
                                         @endforeach
+                                        <th class="form-group mb-3" style="background-color: #fff">Bendras kiekis</th>
                                     </tr>
                             </thead>
         
@@ -299,11 +302,13 @@
                                             @if ($mixingconcrete->delete === 0 && $mixingconcrete->uzsakymo_raide == $zimejimaiBukle['zimejimas'])
                                                 @php
                                                     $suma += $mixingconcrete->kiekis_m3;
+                                                    $bendrasKiekis += $mixingconcrete->kiekis_m3;
                                                 @endphp
                                             @endif
                                         @endforeach
                                         <td>{{ $suma }}</td>
                                     @endforeach
+                                    <td>{{ $bendrasKiekis }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -512,6 +517,34 @@
             <div class="col-md-12 maisimo_duonbaze">
                 <div class="card" style="background-color: #fffd">
                     <div class="card-header">Maišymo duomenis</div>
+
+                    <form action="">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="form-group mb-3">
+                                       <label class="m-1">Rūšiavimas</label>
+                                       <select class=" form-select" name="sort">
+                                            @foreach ($sorts as $sortKey => $sortValue)
+                                            <option value=" {{ $sortKey }}" 
+                                                @if ($sortBy == $sortKey) selected @endif>
+                                                {{ $sortValue }}</option>
+                                            @endforeach
+                                       </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-3">
+                                    <div class="form-group mb-3">
+                                        <button type="submit" class="btn btn-primary mt-4">Rodyti</button>
+                                        <a href="{{  route('mixingconcretes-index') }}" 
+                                            class="btn  btn-secondary mt-4 ms-2">Padinis</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
     
                     <div class="card-body">
     

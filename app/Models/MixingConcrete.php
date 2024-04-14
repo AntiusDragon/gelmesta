@@ -33,9 +33,35 @@ class MixingConcrete extends Model
         'created_at',
     ];
 
+    protected static $sorts = [
+        'no_sort' => 'Nerūšiuota',
+        'created_at_asc' => 'Data (didėjimo tvarka)',
+        'created_at_desc' => 'Data (mažėjimo tvarka)',
+    ];
+
+    protected static $perPageSelect = [
+        // 0 => 'Visi',
+        2 => 2,
+        5 => 5,
+        15 => 15,
+        50 => 50,
+        100 => 100,
+    ];
+
+    public static function getSorts()
+    {
+        return self::$sorts;
+    }
+
     public function labConcrete()
     {
         // return $this->belongsToMany(MixingConcrete::class, 'mixing_lab_concrete');
         return $this->hasMany(LabConcrete::class);
     }
+
+    public static function getPerPageSelect()
+    {
+        return self::$perPageSelect;
+    }
+
 }

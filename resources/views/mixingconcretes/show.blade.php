@@ -214,6 +214,23 @@
                     <div class="card-header">Betonas </div>
     
                     <div class="card-body">
+                        {{-- <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <body>
+                                <tr>
+                                    <td>{{ $mixingconcrete->labconcretes->slankumas_mm }}</td> --}}
+                                    {{-- <td>{{ $mixingconcrete->labconcrete->plotis_mm }}</td>
+                                    <td>{{ $mixingconcrete->labconcrete->ilgis_mm }}</td>
+                                    <td>{{ $mixingconcrete->labconcrete->aukstis_mm }}</td>
+                                    <td>{{ $mixingconcrete->labconcrete->ardancioji_jega_kn }}</td>
+                                    <td>{{ $mixingconcrete->labconcrete->bandinio_mase_g }}</td> --}}
+                                {{-- </tr>
+                            </body>
+                        </table> --}}
                         <div>
                             <a href="{{route('mixingconcretes-index')}}" class="btn btn-secondary m-1">Visi maišimai</a>
                         </div>
