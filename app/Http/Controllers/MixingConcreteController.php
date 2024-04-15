@@ -28,6 +28,7 @@ class MixingConcreteController extends Controller
         $sortBy =$request->query('sort', '');
         $perPageSelect = MixingConcrete::getPerPageSelect();
         $perPage = (int) $request->query('per_page', 2);
+        $s = $request->query('s', ''); // tai ko ieškom
 
         $mixingconcretes = MixingConcrete::query();
 
@@ -45,6 +46,27 @@ class MixingConcreteController extends Controller
         } else {
             $mixingconcretes = $mixingconcretes->get();
         }
+
+        if ($s) {
+            $mixingconcretes = $mixingconcretes
+                ->where('marke', 'like', "%{$s}%");
+                // ->orWhere('slankumo_klase', 'like', "%{$s}%");
+        }
+        // if ($s) {
+        //     $keywords = explode(' ', $s);
+        //     if (count($keywords) > 1) {
+        //         $mixingconcretes = $mixingconcretes->where(function ($query) use ($keywords) {
+        //             foreach (range(0, 1) as $index) {
+        //                 $query->orWhere('marke', 'like', '%'.$keywords[$index].'%')
+        //                 ->where('slankumo_klase', 'like', '%'.$keywords[1 - $index].'%');
+        //             }
+        //         });
+        //     } else {
+        //         $mixingconcretes = $mixingconcretes
+        //             ->where('marke', 'like', "%{$s}%")
+        //             ->orWhere('slankumo_klase', 'like', "%{$s}%");
+        //     }
+        // }
         
         return view('mixingconcretes.index', [
             'mixingconcretes' => $mixingconcretes,
@@ -52,6 +74,7 @@ class MixingConcreteController extends Controller
             'sortBy' => $sortBy,
             'perPageSelect' => $perPageSelect,
             'perPage' => $perPage,
+            's' => $s,
         ]);
     }
 

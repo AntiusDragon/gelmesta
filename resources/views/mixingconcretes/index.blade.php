@@ -160,6 +160,13 @@
                                        </select>
                                     </div>
                                 </div>
+                                
+                                <div class="col-2">
+                                    <div class="form-group mb-3">
+                                       <label class="m-1">Ieškoti maišimo</label>
+                                       <input type="text" class="form-control" name="s" value="{{ $s }}">
+                                    </div>
+                                </div>
 
                                 <div class="col-3">
                                     <div class="form-group mb-3">
