@@ -7,6 +7,7 @@ use App\Models\LabConcrete;
 use App\Http\Requests\StoreMixingConcreteRequest;
 use App\Http\Requests\UpdateMixingConcreteRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class MixingConcreteController extends Controller
 {
@@ -31,6 +32,7 @@ class MixingConcreteController extends Controller
         $s = $request->query('s', ''); // tai ko ieškom
 
         $mixingconcretes = MixingConcrete::query();
+        $mixingconcretes = $mixingconcretes->where('delete', 0);
 
         $mixingconcretes = match($sortBy) {
             'created_at_asc' => $mixingconcretes->orderBy('created_at'),
@@ -87,8 +89,19 @@ class MixingConcreteController extends Controller
 
         $sorts = MixingConcrete::getSorts();
         $sortBy =$request->query('sort', '');
+        // $perPageSelect = MixingConcrete::getPerPageSelect();
+        // $perPage = (int) $request->query('per_page', 2);
 
         $mixingconcretes = MixingConcrete::query();
+        
+        // $today = Carbon::today();
+        // $startOfLastWeek = Carbon::now()->startOfWeek()->subWeek();
+        // $endOfLastWeek = Carbon::now()->endOfWeek()->subWeek();
+        // $mixingconcretes = $mixingconcretes->where('delete', 0)
+                                            // ->whereBetween('created_at', [$startOfWeek, $endOfWeek])
+                                            // ->whereBetween('created_at', [$startOfLastWeek, $endOfLastWeek])
+                                            // ->whereDate('created_at', $today)
+                                            ;
 
         $mixingconcretes = match($sortBy) {
             'created_at_asc' => $mixingconcretes->orderBy('created_at'),
@@ -96,12 +109,19 @@ class MixingConcreteController extends Controller
             default => $mixingconcretes,
         };
 
-        $mixingconcretes = $mixingconcretes->get();
+        // if ($perPage > 0) {
+        //     $mixingconcretes = $mixingconcretes->paginate($perPage)->withQueryString();
+        // } else {
+            $mixingconcretes = $mixingconcretes->get()->sortByDesc('created_at');
+        // }
 
         return view('mixingconcretes.create', [
             'mixingconcretes' => $mixingconcretes,
             'sorts' => $sorts,
             'sortBy' => $sortBy,
+            // 'perPageSelect' => $perPageSelect,
+            // 'perPage' => $perPage,
+            // 's' => $s,
         ]);
     }
 

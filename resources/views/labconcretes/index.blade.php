@@ -412,7 +412,7 @@
             <div class="card" style="background-color: #fffd">
                 <div class="card-header">Betono labaratorija</div>
 
-                {{-- <form action="">
+                <form action="">
                     <div class="container">
                         <div class="row">
                             <div class="col-3">
@@ -427,6 +427,19 @@
                                    </select>
                                 </div>
                             </div>
+                                
+                            {{-- <div class="col-2">
+                                <div class="form-group mb-3">
+                                   <label class="m-1">Rodyti puslapyjė rezultatų</label>
+                                   <select class="form-select" name="per_page">
+                                        @foreach ($perPageSelect as $perPageKey => $perPageValue)
+                                        <option value="{{ $perPageKey }}" 
+                                            @if ($perPage == $perPageKey) selected @endif
+                                            >{{ $perPageValue }}</option>
+                                       @endforeach
+                                   </select>
+                                </div>
+                            </div> --}}
 
                             <div class="col-3">
                                 <div class="form-group mb-3">
@@ -438,7 +451,7 @@
 
                         </div>
                     </div>
-                </form> --}}
+                </form>
 
                     <table>
                         <thead>
@@ -535,6 +548,11 @@
 
                 </div>
             </div>
+            @if ($perPage)
+            <div class="mt-3">  
+                {{ $labconcretes->links() }}
+            </div>
+            @endif
         </div>
 
     </div>

@@ -21,27 +21,28 @@ class LabConcrete extends Model
         'ardancioji_jega_kn',
         'mixing_concrete_id',
         'user_id',
+        // 'created_at',
     ];
 
-    // protected static $sorts = [
-    //     'no_sort' => 'Nerūšiuota',
-    //     'created_at_asc' => 'Data (didėjimo tvarka)',
-    //     'created_at_desc' => 'Data (mažėjimo tvarka)',
-    // ];
+    protected static $sorts = [
+        'no_sort' => 'Nerūšiuota',
+        'created_at_asc' => 'Data (didėjimo tvarka)',
+        'created_at_desc' => 'Data (mažėjimo tvarka)',
+    ];
 
-    // protected static $perPageSelect = [
-    //     // 0 => 'Visi',
-    //     2 => 2,
-    //     5 => 5,
-    //     15 => 15,
-    //     50 => 50,
-    //     100 => 100,
-    // ];
+    protected static $perPageSelect = [
+        // 0 => 'Visi',
+        2 => 2,
+        5 => 5,
+        15 => 15,
+        50 => 50,
+        100 => 100,
+    ];
 
-    // public static function getSorts()
-    // {
-    //     return self::$sorts;
-    // }
+    public static function getSorts()
+    {
+        return self::$sorts;
+    }
 
     public function mixingConcrete ()
     {

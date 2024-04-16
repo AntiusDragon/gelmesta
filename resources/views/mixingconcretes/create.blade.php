@@ -486,16 +486,16 @@
                                     <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="maisikles_recepto_id"></div>
                                     <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="user_maise_id"></div>
                                     <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="user_edit_id"></div>
-                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Marke" name="marke"></td>
-                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Slankumas" name="slankumo_klase"></td>
-                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Typas" name="tipas"></td>
-                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="XF / F" name="salcio_priedai"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="{{ ucwords(old('marke')) }}" placeholder="Marke" name="marke"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="{{ ucwords(old('slankumo_klase')) }}" placeholder="Slankumas" name="slankumo_klase"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="{{ str_replace('.', ',', old('tipas')) }}" placeholder="Typas" name="tipas"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="{{ ucwords(old('salcio_priedai')) }}" placeholder="XF / F" name="salcio_priedai"></td>
                                     <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Pagaminti kubeliai &quot;G&quot; vnt." name="pagaminti_kubeliai_g"></td>
                                     <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Pagaminti kubeliai &quot;P&quot; vnt." name="pagaminti_kubeliai_p"></td>
                                     <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Maišyklė" name="maisykle"></td>
-                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Kiekis, m3" name="kiekis_m3"></td>
-                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Užsakymo Nr" name="uzsakymo_nr"></td>
-                                    <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Bukle" name="uzsakymo_raide"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="{{ str_replace(',', '.', old('kiekis_m3')) }}" placeholder="Kiekis, m3" name="kiekis_m3"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="{{ ucwords(old('uzsakymo_nr')) }}" placeholder="Užsakymo Nr" name="uzsakymo_nr"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="{{ ucwords(old('uzsakymo_raide')) }}" placeholder="Bukle" name="uzsakymo_raide"></td>
                                     <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Užsakovas" name="uzsakovas"></td>
                                     <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Komentaras" name="komentaras"></td>
                                 </tr>
@@ -570,7 +570,7 @@
                                 @endphp
 
                                 @forelse ($lastDayRecords as $mixingconcrete)
-                                @if ($mixingconcrete->delete == '0')
+                                {{-- @if ($mixingconcrete->delete == '0') --}}
                                 <tr>
                                     <td>{{ $mixingconcrete->created_at }}</td>
                                     @foreach ($createMixingConcretesFormos1 as $createMixingConcretesForma1)
@@ -587,7 +587,7 @@
                                     </td>
     
                                 </tr>
-                                @endif
+                                {{-- @endif --}}
                                 @empty
                                 <tr>
                                     <td colspan="15">Maišimų nėra</td>
@@ -599,6 +599,11 @@
                     </div>
                 </div>
             </div>
+            {{-- @if ($perPage)
+            <div class="mt-3">  
+                {{ $mixingconcretes->links() }}
+            </div>
+            @endif --}}
     
         </div>
     </div>
