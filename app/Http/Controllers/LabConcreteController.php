@@ -22,12 +22,61 @@ class LabConcreteController extends Controller
     {
         // $labconcrete = LabConcrete::where('mixingconcrete_id',  1)->get();
         // dump($labconcrete);
-        $labconcretes = LabConcrete::all()->sortByDesc('created_at');
-        $mixingconcretes = MixingConcrete::all();
+        $labconcretes = LabConcrete::all();
+        $mixingconcretes = MixingConcrete::all()->sortByDesc('created_at');
+
+        // $sorts = MixingConcrete::getSorts();
+        // $sortBy =$request->query('sort', '');
+        // $perPageSelect = MixingConcrete::getPerPageSelect();
+        // $perPage = (int) $request->query('per_page', 2);
+        // $s = $request->query('s', ''); // tai ko ieškom
+
+        // $mixingconcretes = MixingConcrete::query();
+
+        // $mixingconcretes = match($sortBy) {
+        //     'created_at_asc' => $mixingconcretes->orderBy('created_at'),
+        //     'created_at_desc' => $mixingconcretes->orderByDesc('created_at'),
+        //     default => $mixingconcretes,
+        // };
+
+        // $mixingconcretes = $mixingconcretes->get();
+        // $mixingconcretes = $mixingconcretes->paginate($perPage)->withQueryString();
+
+        // if ($perPage > 0) {
+        //     $mixingconcretes = $mixingconcretes->paginate($perPage)->withQueryString();
+        // } else {
+        //     $mixingconcretes = $mixingconcretes->get();
+        // }
+
+        // if ($s) {
+        //     $mixingconcretes = $mixingconcretes
+        //         ->where('marke', 'like', "%{$s}%");
+        //         // ->orWhere('slankumo_klase', 'like', "%{$s}%");
+        // }
+        // if ($s) {
+        //     $keywords = explode(' ', $s);
+        //     if (count($keywords) > 1) {
+        //         $mixingconcretes = $mixingconcretes->where(function ($query) use ($keywords) {
+        //             foreach (range(0, 1) as $index) {
+        //                 $query->orWhere('marke', 'like', '%'.$keywords[$index].'%')
+        //                 ->where('slankumo_klase', 'like', '%'.$keywords[1 - $index].'%');
+        //             }
+        //         });
+        //     } else {
+        //         $mixingconcretes = $mixingconcretes
+        //             ->where('marke', 'like', "%{$s}%")
+        //             ->orWhere('slankumo_klase', 'like', "%{$s}%");
+        //     }
+        // }
         
         return view('labconcretes.index', [
             'labconcretes' => $labconcretes,
             'mixingconcretes' => $mixingconcretes,
+            // 'sorts' => $sorts,
+            // 'sortBy' => $sortBy,
+            // 'perPageSelect' => $perPageSelect,
+            // 'perPage' => $perPage,
+            // 's' => $s,
         ]);
     }
 

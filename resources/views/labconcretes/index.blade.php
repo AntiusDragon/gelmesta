@@ -412,7 +412,7 @@
             <div class="card" style="background-color: #fffd">
                 <div class="card-header">Betono labaratorija</div>
 
-                <form action="">
+                {{-- <form action="">
                     <div class="container">
                         <div class="row">
                             <div class="col-3">
@@ -431,14 +431,14 @@
                             <div class="col-3">
                                 <div class="form-group mb-3">
                                     <button type="submit" class="btn btn-primary mt-4">Rodyti</button>
-                                    <a href="{{  route('mixingconcretes-index') }}" 
+                                    <a href="{{  route('labconcretes-index') }}" 
                                         class="btn  btn-secondary mt-4 ms-2">Padinis</a>
                                 </div>
                             </div>
 
                         </div>
                     </div>
-                </form>
+                </form> --}}
 
                     <table>
                         <thead>
