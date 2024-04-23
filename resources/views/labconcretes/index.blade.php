@@ -428,7 +428,7 @@
                                 </div>
                             </div>
                                 
-                            {{-- <div class="col-2">
+                            <div class="col-2">
                                 <div class="form-group mb-3">
                                    <label class="m-1">Rodyti puslapyjė rezultatų</label>
                                    <select class="form-select" name="per_page">
@@ -439,7 +439,7 @@
                                        @endforeach
                                    </select>
                                 </div>
-                            </div> --}}
+                            </div>
 
                             <div class="col-3">
                                 <div class="form-group mb-3">

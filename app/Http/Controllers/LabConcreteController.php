@@ -27,11 +27,12 @@ class LabConcreteController extends Controller
 
         $sorts = LabConcrete::getSorts();
         $sortBy =$request->query('sort', '');
-        // $perPageSelect = LabConcrete::getPerPageSelect();
+        $perPageSelect = LabConcrete::getPerPageSelect();
         $perPage = (int) $request->query('per_page', 2);
-        $s = $request->query('s', ''); // tai ko ieškom
+        // $s = $request->query('s', ''); // tai ko ieškom
 
         $labconcretes = LabConcrete::query();
+        // $labconcretes = $labconcretes->where('delete', 0);
 
         $labconcretes = match($sortBy) {
             'created_at_asc' => $labconcretes->orderBy('created_at'),
@@ -74,7 +75,7 @@ class LabConcreteController extends Controller
             'mixingconcretes' => $mixingconcretes,
             'sorts' => $sorts,
             'sortBy' => $sortBy,
-            // 'perPageSelect' => $perPageSelect,
+            'perPageSelect' => $perPageSelect,
             'perPage' => $perPage,
             // 's' => $s,
         ]);

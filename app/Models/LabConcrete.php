@@ -50,8 +50,8 @@ class LabConcrete extends Model
         return $this->belongsTo(MixingConcrete::class);
     }
 
-    // public static function getPerPageSelect()
-    // {
-    //     return self::$perPageSelect;
-    // }
+    public static function getPerPageSelect()
+    {
+        return self::$perPageSelect;
+    }
 }
