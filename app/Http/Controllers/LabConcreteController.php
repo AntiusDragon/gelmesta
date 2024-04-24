@@ -43,12 +43,6 @@ class LabConcreteController extends Controller
         // $labconcretes = $labconcretes->get();
         // $labconcretes = $labconcretes->paginate($perPage)->withQueryString();
 
-        if ($perPage > 0) {
-            $labconcretes = $labconcretes->paginate($perPage)->withQueryString();
-        } else {
-            $labconcretes = $labconcretes->get();
-        }
-
         // if ($s) {
         //     $mixingconcretes = $mixingconcretes
         //         ->where('marke', 'like', "%{$s}%");
@@ -69,6 +63,30 @@ class LabConcreteController extends Controller
         //             ->orWhere('slankumo_klase', 'like', "%{$s}%");
         //     }
         // }
+
+        // if ($s) {
+        //     $keywords = explode(' ', $s);
+        //     $labconcretes = $labconcretes->where(function ($query) use ($keywords) {
+        //         foreach ($keywords as $keyword) {
+        //             $query->where(function ($query) use ($keyword) {
+        //                 $query->where('created_at', 'like', "%{$keyword}%")
+        //                       ->orWhere('marke', 'like', "%{$keyword}%")
+        //                       ->orWhere('slankumo_klase', 'like', "%{$keyword}%")
+        //                       ->orWhere('salcio_priedai', 'like', "%{$keyword}%")
+        //                       ->orWhere('maisykle', 'like', "%{$keyword}%")
+        //                       ->orWhere('uzsakymo_nr', 'like', "%{$keyword}%")
+        //                       ->orWhere('uzsakymo_raide', 'like', "%{$keyword}%");
+        //             });
+        //         }
+        //     });
+        // }
+
+        if ($perPage > 0) {
+            $labconcretes = $labconcretes->paginate($perPage)->withQueryString();
+        } else {
+            $labconcretes = $labconcretes->get()->sortByDesc('created_at');
+            // $labconcretes = $labconcretes->get()->sortByDesc('created_at');
+        }
         
         return view('labconcretes.index', [
             'labconcretes' => $labconcretes,

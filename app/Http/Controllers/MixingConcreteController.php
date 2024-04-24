@@ -43,32 +43,57 @@ class MixingConcreteController extends Controller
         // $mixingconcretes = $mixingconcretes->get();
         // $mixingconcretes = $mixingconcretes->paginate($perPage)->withQueryString();
 
-        if ($perPage > 0) {
-            $mixingconcretes = $mixingconcretes->paginate($perPage)->withQueryString();
-        } else {
-            $mixingconcretes = $mixingconcretes->get();
-        }
 
-        if ($s) {
-            $mixingconcretes = $mixingconcretes
-                ->where('marke', 'like', "%{$s}%");
-                // ->orWhere('slankumo_klase', 'like', "%{$s}%");
-        }
+        // if ($s) {
+        //     $mixingconcretes = $mixingconcretes
+        //         ->where('marke', 'like', "%{$s}%")
+        //         ->orWhere('uzsakovas', 'like', "%{$s}%");
+        // }
         // if ($s) {
         //     $keywords = explode(' ', $s);
         //     if (count($keywords) > 1) {
         //         $mixingconcretes = $mixingconcretes->where(function ($query) use ($keywords) {
         //             foreach (range(0, 1) as $index) {
         //                 $query->orWhere('marke', 'like', '%'.$keywords[$index].'%')
-        //                 ->where('slankumo_klase', 'like', '%'.$keywords[1 - $index].'%');
+        //                 ->where('slankumo_klase', 'like', '%'.$keywords[1 - $index].'%')
         //             }
         //         });
         //     } else {
         //         $mixingconcretes = $mixingconcretes
         //             ->where('marke', 'like', "%{$s}%")
-        //             ->orWhere('slankumo_klase', 'like', "%{$s}%");
+        //             ->orWhere('slankumo_klase', 'like', "%{$s}%")
         //     }
         // }
+        if ($s) {
+            $keywords = explode(' ', $s);
+            $mixingconcretes = $mixingconcretes->where(function ($query) use ($keywords) {
+                foreach ($keywords as $keyword) {
+                    $query->where(function ($query) use ($keyword) {
+                        $query->where('created_at', 'like', "%{$keyword}%")
+                              ->orWhere('maisikles_id', 'like', "%{$keyword}%")
+                              ->orWhere('marke', 'like', "%{$keyword}%")
+                              ->orWhere('slankumo_klase', 'like', "%{$keyword}%")
+                              ->orWhere('tipas', 'like', "%{$keyword}%")
+                              ->orWhere('salcio_priedai', 'like', "%{$keyword}%")
+                              ->orWhere('maisykle', 'like', "%{$keyword}%")
+                              ->orWhere('uzsakymo_nr', 'like', "%{$keyword}%")
+                              ->orWhere('uzsakymo_raide', 'like', "%{$keyword}%")
+                              ->orWhere('uzsakovas', 'like', "%{$keyword}%")
+                              ->orWhere('komentaras', 'like', "%{$keyword}%");
+                    });
+                }
+            });
+        }
+        
+        
+        
+              
+
+        if ($perPage > 0) {
+            $mixingconcretes = $mixingconcretes->paginate($perPage)->withQueryString();
+        } else {
+            $mixingconcretes = $mixingconcretes->get();
+        }
         
         return view('mixingconcretes.index', [
             'mixingconcretes' => $mixingconcretes,
@@ -91,8 +116,10 @@ class MixingConcreteController extends Controller
         $sortBy =$request->query('sort', '');
         // $perPageSelect = MixingConcrete::getPerPageSelect();
         // $perPage = (int) $request->query('per_page', 2);
+        $s = $request->query('s', ''); // tai ko ieškom
 
         $mixingconcretes = MixingConcrete::query();
+        $mixingconcretes = $mixingconcretes->where('delete', 0);
         
         // $today = Carbon::today();
         // $startOfLastWeek = Carbon::now()->startOfWeek()->subWeek();
@@ -109,10 +136,31 @@ class MixingConcreteController extends Controller
             default => $mixingconcretes,
         };
 
+        if ($s) {
+            $keywords = explode(' ', $s);
+            $mixingconcretes = $mixingconcretes->where(function ($query) use ($keywords) {
+                foreach ($keywords as $keyword) {
+                    $query->where(function ($query) use ($keyword) {
+                        $query->where('created_at', 'like', "%{$keyword}%")
+                              ->orWhere('maisikles_id', 'like', "%{$keyword}%")
+                              ->orWhere('marke', 'like', "%{$keyword}%")
+                              ->orWhere('slankumo_klase', 'like', "%{$keyword}%")
+                              ->orWhere('tipas', 'like', "%{$keyword}%")
+                              ->orWhere('salcio_priedai', 'like', "%{$keyword}%")
+                              ->orWhere('maisykle', 'like', "%{$keyword}%")
+                              ->orWhere('uzsakymo_nr', 'like', "%{$keyword}%")
+                              ->orWhere('uzsakymo_raide', 'like', "%{$keyword}%")
+                              ->orWhere('uzsakovas', 'like', "%{$keyword}%")
+                              ->orWhere('komentaras', 'like', "%{$keyword}%");
+                    });
+                }
+            });
+        }
+
         // if ($perPage > 0) {
         //     $mixingconcretes = $mixingconcretes->paginate($perPage)->withQueryString();
         // } else {
-            $mixingconcretes = $mixingconcretes->get()->sortByDesc('created_at');
+            $mixingconcretes = $mixingconcretes->get();
         // }
 
         return view('mixingconcretes.create', [
@@ -121,7 +169,7 @@ class MixingConcreteController extends Controller
             'sortBy' => $sortBy,
             // 'perPageSelect' => $perPageSelect,
             // 'perPage' => $perPage,
-            // 's' => $s,
+            's' => $s,
         ]);
     }
 

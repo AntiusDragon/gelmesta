@@ -533,6 +533,26 @@
                                        </select>
                                     </div>
                                 </div>
+                                
+                                {{-- <div class="col-2">
+                                    <div class="form-group mb-3">
+                                       <label class="m-1">Rodyti puslapyjė rezultatų</label>
+                                       <select class="form-select" name="per_page">
+                                            @foreach ($perPageSelect as $perPageKey => $perPageValue)
+                                            <option value="{{ $perPageKey }}" 
+                                                @if ($perPage == $perPageKey) selected @endif
+                                                >{{ $perPageValue }}</option>
+                                           @endforeach
+                                       </select>
+                                    </div>
+                                </div> --}}
+                                
+                                <div class="col-2">
+                                    <div class="form-group mb-3">
+                                       <label class="m-1">Ieškoti maišimo</label>
+                                       <input type="text" class="form-control" name="s" value="{{ $s }}">
+                                    </div>
+                                </div>
 
                                 <div class="col-3">
                                     <div class="form-group mb-3">
