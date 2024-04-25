@@ -132,7 +132,7 @@
                 <div class="card" style="background-color: #fffd">
                     <div class="card-header">Maišymo duomenis</div>
 
-                    <form action="">
+                    <form action="{{route('mixingconcretes-index')}}">
                         <div class="container">
                             <div class="row">
                                 <div class="col-3">
@@ -171,7 +171,7 @@
                                 <div class="col-3">
                                     <div class="form-group mb-3">
                                         <button type="submit" class="btn btn-primary mt-4">Rodyti</button>
-                                        <a href="{{  route('mixingconcretes-index') }}" 
+                                        <a href="{{route('mixingconcretes-index')}}" 
                                             class="btn  btn-secondary mt-4 ms-2">Padinis</a>
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@
     
                     <div class="card-body">
                         <div>
-                            <a href="{{ route('mixingconcretes-create') }}" class="btn btn-success">Pridėti nauja maišyma</a>
+                            <a href="{{route('mixingconcretes-create')}}" class="btn btn-success">Pridėti nauja maišyma</a>
                         </div>
     
                         <table>
@@ -191,7 +191,7 @@
                                     @foreach ($createMixingConcretesFormos1 as $createMixingConcretesForma1)
                                     <th>{{ $createMixingConcretesForma1['label'] }}</th>
                                     @endforeach
-                                    <th>Bukle</th>
+                                    <th>Būklė</th>
                                     <th>Užsakovas</th>
                                     <th>Komentaras</th>
                                     <th>Veiksmai</th>
@@ -210,9 +210,9 @@
                                     <td>{{ $mixingconcrete->komentaras }}</td>
     
                                     <td>
-                                        <a href="{{ route('mixingconcretes-edit', $mixingconcrete)}}" class="btn btn-success m-1">Redaguoti</a>
+                                        <a href="{{route('mixingconcretes-edit', $mixingconcrete)}}" class="btn btn-success m-1">Redaguoti</a>
                                         {{-- <a href="{{ route('mixingconcretes-delete', $mixingconcrete)}}" class="btn btn-danger m-1">Trinti</a> --}}
-                                        <a href="{{ route('mixingconcretes-show', $mixingconcrete)}}" class="btn btn-secondary m-1">Peržiūrėti</a>
+                                        <a href="{{route('mixingconcretes-show', $mixingconcrete)}}" class="btn btn-secondary m-1">Peržiūrėti</a>
                                     </td>
     
                                 </tr>

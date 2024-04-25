@@ -15,10 +15,10 @@ class MixingConcrete extends Model
         'maisikles_recepto_id',
         'user_maise_id',
         'user_edit_id',
-        // 'edit_data',
-        // 'maisimo_data',
         'marke',
         'slankumo_klase',
+        // 'slankumas_mm',
+        // 'itraukto_oro_kiekis',
         'tipas',
         'salcio_priedai',
         'pagaminti_kubeliai_g',
@@ -41,11 +41,11 @@ class MixingConcrete extends Model
 
     protected static $perPageSelect = [
         // 0 => 'Visi',
-        2 => 2,
-        5 => 5,
         15 => 15,
-        50 => 50,
-        100 => 100,
+        30 => 30,
+        60 => 60,
+        90 => 90,
+        120 => 120,
     ];
 
     public static function getSorts()
@@ -53,15 +53,15 @@ class MixingConcrete extends Model
         return self::$sorts;
     }
 
+    public static function getPerPageSelect()
+    {
+        return self::$perPageSelect;
+    }
+
     public function labConcrete()
     {
         // return $this->belongsToMany(MixingConcrete::class, 'mixing_lab_concrete');
         return $this->hasMany(LabConcrete::class);
-    }
-
-    public static function getPerPageSelect()
-    {
-        return self::$perPageSelect;
     }
 
 }

@@ -28,8 +28,7 @@ class LabConcreteController extends Controller
         $sorts = LabConcrete::getSorts();
         $sortBy =$request->query('sort', '');
         $perPageSelect = LabConcrete::getPerPageSelect();
-        $perPage = (int) $request->query('per_page', 2);
-        // $s = $request->query('s', ''); // tai ko ieškom
+        $perPage = (int) $request->query('per_page', 15);
 
         $labconcretes = LabConcrete::query();
         // $labconcretes = $labconcretes->where('delete', 0);
@@ -39,47 +38,6 @@ class LabConcreteController extends Controller
             'created_at_desc' => $labconcretes->orderByDesc('created_at'),
             default => $labconcretes,
         };
-
-        // $labconcretes = $labconcretes->get();
-        // $labconcretes = $labconcretes->paginate($perPage)->withQueryString();
-
-        // if ($s) {
-        //     $mixingconcretes = $mixingconcretes
-        //         ->where('marke', 'like', "%{$s}%");
-        //         // ->orWhere('slankumo_klase', 'like', "%{$s}%");
-        // }
-        // if ($s) {
-        //     $keywords = explode(' ', $s);
-        //     if (count($keywords) > 1) {
-        //         $mixingconcretes = $mixingconcretes->where(function ($query) use ($keywords) {
-        //             foreach (range(0, 1) as $index) {
-        //                 $query->orWhere('marke', 'like', '%'.$keywords[$index].'%')
-        //                 ->where('slankumo_klase', 'like', '%'.$keywords[1 - $index].'%');
-        //             }
-        //         });
-        //     } else {
-        //         $mixingconcretes = $mixingconcretes
-        //             ->where('marke', 'like', "%{$s}%")
-        //             ->orWhere('slankumo_klase', 'like', "%{$s}%");
-        //     }
-        // }
-
-        // if ($s) {
-        //     $keywords = explode(' ', $s);
-        //     $labconcretes = $labconcretes->where(function ($query) use ($keywords) {
-        //         foreach ($keywords as $keyword) {
-        //             $query->where(function ($query) use ($keyword) {
-        //                 $query->where('created_at', 'like', "%{$keyword}%")
-        //                       ->orWhere('marke', 'like', "%{$keyword}%")
-        //                       ->orWhere('slankumo_klase', 'like', "%{$keyword}%")
-        //                       ->orWhere('salcio_priedai', 'like', "%{$keyword}%")
-        //                       ->orWhere('maisykle', 'like', "%{$keyword}%")
-        //                       ->orWhere('uzsakymo_nr', 'like', "%{$keyword}%")
-        //                       ->orWhere('uzsakymo_raide', 'like', "%{$keyword}%");
-        //             });
-        //         }
-        //     });
-        // }
 
         if ($perPage > 0) {
             $labconcretes = $labconcretes->paginate($perPage)->withQueryString();
@@ -95,7 +53,6 @@ class LabConcreteController extends Controller
             'sortBy' => $sortBy,
             'perPageSelect' => $perPageSelect,
             'perPage' => $perPage,
-            // 's' => $s,
         ]);
     }
 

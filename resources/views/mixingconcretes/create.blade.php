@@ -251,7 +251,6 @@
         $filteredData[$key][] = $mixingconcrete;
     }
     
-    // Nustatome naujausius metus ir savaitės numerius
     $currentYear = $maxYear;
     $currentWeek = $maxWeek;
     
@@ -271,24 +270,24 @@
                     <div class="card-body">
                         <table>
                             <thead>
-                                    <tr>
-                                        <th>Žimejimas</th>
-                                        @foreach ($zimejimaiBukles as $zimejimaiBukle)
-                                            @php
-                                                $background_color = '#fff';
-                                                foreach ($lastDayRecords as $mixingconcrete) {
-                                                    if ($mixingconcrete->delete === 0 && $mixingconcrete->uzsakymo_raide == $zimejimaiBukle['zimejimas']) {
-                                                        $background_color = '#0f0';
-                                                        break;
-                                                    }
+                                <tr>
+                                    <th>Žimejimas</th>
+                                    @foreach ($zimejimaiBukles as $zimejimaiBukle)
+                                        @php
+                                            $background_color = '#fff';
+                                            foreach ($lastDayRecords as $mixingconcrete) {
+                                                if ($mixingconcrete->delete === 0 && $mixingconcrete->uzsakymo_raide == $zimejimaiBukle['zimejimas']) {
+                                                    $background_color = '#0f0';
+                                                    break;
                                                 }
-                                            @endphp
-                                            <th class="form-group mb-3" style="background-color: {{ $background_color }}">
-                                                {{ $zimejimaiBukle['zimejimas'] }}
-                                            </th>
-                                        @endforeach
-                                        <th class="form-group mb-3" style="background-color: #fff">Bendras kiekis</th>
-                                    </tr>
+                                            }
+                                        @endphp
+                                        <th class="form-group mb-3" style="background-color: {{ $background_color }}">
+                                            {{ $zimejimaiBukle['zimejimas'] }}
+                                        </th>
+                                    @endforeach
+                                    <th class="form-group mb-3" style="background-color: #fff">Bendras kiekis</th>
+                                </tr>
                             </thead>
         
                             <tbody>
@@ -474,7 +473,7 @@
                                     @foreach ($createMixingConcretesFormos1 as $createMixingConcretesForma1)
                                     <th>{{ $createMixingConcretesForma1['label'] }}</th>
                                     @endforeach
-                                    <th>Bukle</th>
+                                    <th>Būklė</th>
                                     <th>Užsakovas</th>
                                     <th>Komentaras</th>
                                 </tr>
@@ -518,7 +517,7 @@
                 <div class="card" style="background-color: #fffd">
                     <div class="card-header">Maišymo duomenis</div>
 
-                    <form action="">
+                    <form action="{{route('mixingconcretes-create')}}">
                         <div class="container">
                             <div class="row">
                                 <div class="col-3">
@@ -534,19 +533,6 @@
                                     </div>
                                 </div>
                                 
-                                {{-- <div class="col-2">
-                                    <div class="form-group mb-3">
-                                       <label class="m-1">Rodyti puslapyjė rezultatų</label>
-                                       <select class="form-select" name="per_page">
-                                            @foreach ($perPageSelect as $perPageKey => $perPageValue)
-                                            <option value="{{ $perPageKey }}" 
-                                                @if ($perPage == $perPageKey) selected @endif
-                                                >{{ $perPageValue }}</option>
-                                           @endforeach
-                                       </select>
-                                    </div>
-                                </div> --}}
-                                
                                 <div class="col-2">
                                     <div class="form-group mb-3">
                                        <label class="m-1">Ieškoti maišimo</label>
@@ -557,7 +543,7 @@
                                 <div class="col-3">
                                     <div class="form-group mb-3">
                                         <button type="submit" class="btn btn-primary mt-4">Rodyti</button>
-                                        <a href="{{  route('mixingconcretes-index') }}" 
+                                        <a href="{{route('mixingconcretes-create')}}" 
                                             class="btn  btn-secondary mt-4 ms-2">Padinis</a>
                                     </div>
                                 </div>
@@ -575,7 +561,7 @@
                                     @foreach ($createMixingConcretesFormos1 as $createMixingConcretesForma1)
                                     <th>{{ $createMixingConcretesForma1['label'] }}</th>
                                     @endforeach
-                                    <th>Bukle</th>
+                                    <th>Būklė</th>
                                     <th>Užsakovas</th>
                                     <th>Komentaras</th>
                                     <th>Veiksmai</th>
@@ -603,7 +589,7 @@
                                     <td>
                                         <a href="{{route('mixingconcretes-edit', $mixingconcrete)}}" class="btn btn-success m-1">Redaguoti</a>
                                         {{-- <a href="{{route('mixingconcretes-delete', $mixingconcrete)}}" class="btn btn-danger m-1">Trinti</a> --}}
-                                        <a href="{{ route('mixingconcretes-show', $mixingconcrete)}}" class="btn btn-secondary m-1">Peržiūrėti</a>
+                                        <a href="{{route('mixingconcretes-show', $mixingconcrete)}}" class="btn btn-secondary m-1">Peržiūrėti</a>
                                     </td>
     
                                 </tr>

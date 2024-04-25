@@ -36,10 +36,10 @@
                                 Betono gamyga
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbar2Dropdown">
-                                <a class="dropdown-item" href="{{route('mixingconcretes-index')}}">Betono msišymo duomenis</a>
-                                <a class="dropdown-item" href="{{route('mixingconcretes-create')}}">Betono maišymas</a>
-                                <a class="dropdown-item" href="{{route('labconcretes-index')}}">Betono pardavimo kubelių žurnalas </a>
-                                <a class="dropdown-item" href="{{route('labconcretes-create')}}">Betono laboratorija</a>
+                                <a class="dropdown-item" href="{{route('mixingconcretes-index')}}">Maišymo duomenis</a>
+                                <a class="dropdown-item" href="{{route('mixingconcretes-create')}}">Naujas maišymas</a>
+                                <a class="dropdown-item" href="{{route('labconcretes-index')}}">Kubelių žurnalas</a>
+                                <a class="dropdown-item" href="{{route('labconcretes-create')}}">Kubelių testavimas</a>
                                 {{-- <a class="dropdown-item" href="{{route('labconcretes-create')}}">Betono maišymo tikrinimas</a> --}}
                                 {{-- <a class="dropdown-item" href="{{route('labconcretes-create')}}">Betono itraukto oro kiekis %</a> --}}
                             </div>

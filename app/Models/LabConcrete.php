@@ -19,6 +19,7 @@ class LabConcrete extends Model
         'aukstis_mm',
         'bandinio_mase_g',
         'ardancioji_jega_kn',
+        // 'komentaras',
         'mixing_concrete_id',
         'user_id',
         // 'created_at',
@@ -32,16 +33,21 @@ class LabConcrete extends Model
 
     protected static $perPageSelect = [
         // 0 => 'Visi',
-        2 => 2,
-        5 => 5,
         15 => 15,
-        50 => 50,
-        100 => 100,
+        30 => 30,
+        60 => 60,
+        90 => 90,
+        120 => 120,
     ];
 
     public static function getSorts()
     {
         return self::$sorts;
+    }
+
+    public static function getPerPageSelect()
+    {
+        return self::$perPageSelect;
     }
 
     public function mixingConcrete ()
@@ -50,8 +56,4 @@ class LabConcrete extends Model
         return $this->belongsTo(MixingConcrete::class);
     }
 
-    public static function getPerPageSelect()
-    {
-        return self::$perPageSelect;
-    }
 }

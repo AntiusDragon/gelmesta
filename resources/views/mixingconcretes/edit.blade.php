@@ -264,7 +264,7 @@
                                 <button style="width: 49%" type="submit" class="btn btn-outline-primary m-1">Keisti</button>
                                 @csrf
                                 @method('put')
-                                <a style="width: 49%" href="{{ route('mixingconcretes-index') }}" class="btn btn-secondary m-1">Atšaukti</a>
+                                <a style="width: 49%" href="{{route('mixingconcretes-index')}}" class="btn btn-secondary m-1">Atšaukti</a>
                             </div>
                         </form>
     

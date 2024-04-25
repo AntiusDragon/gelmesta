@@ -28,7 +28,7 @@ class MixingConcreteController extends Controller
         $sorts = MixingConcrete::getSorts();
         $sortBy =$request->query('sort', '');
         $perPageSelect = MixingConcrete::getPerPageSelect();
-        $perPage = (int) $request->query('per_page', 2);
+        $perPage = (int) $request->query('per_page', 15);
         $s = $request->query('s', ''); // tai ko ieškom
 
         $mixingconcretes = MixingConcrete::query();
@@ -115,7 +115,7 @@ class MixingConcreteController extends Controller
         $sorts = MixingConcrete::getSorts();
         $sortBy =$request->query('sort', '');
         // $perPageSelect = MixingConcrete::getPerPageSelect();
-        // $perPage = (int) $request->query('per_page', 2);
+        // $perPage = (int) $request->query('per_page', 15);
         $s = $request->query('s', ''); // tai ko ieškom
 
         $mixingconcretes = MixingConcrete::query();
