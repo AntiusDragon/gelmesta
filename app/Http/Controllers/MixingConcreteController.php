@@ -92,7 +92,7 @@ class MixingConcreteController extends Controller
         if ($perPage > 0) {
             $mixingconcretes = $mixingconcretes->paginate($perPage)->withQueryString();
         } else {
-            $mixingconcretes = $mixingconcretes->get();
+            $mixingconcretes = $mixingconcretes->get()->sortByDesc('created_at');
         }
         
         return view('mixingconcretes.index', [
@@ -160,7 +160,7 @@ class MixingConcreteController extends Controller
         // if ($perPage > 0) {
         //     $mixingconcretes = $mixingconcretes->paginate($perPage)->withQueryString();
         // } else {
-            $mixingconcretes = $mixingconcretes->get();
+            $mixingconcretes = $mixingconcretes->get()->sortByDesc('created_at');
         // }
 
         return view('mixingconcretes.create', [

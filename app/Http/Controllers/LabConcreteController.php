@@ -22,16 +22,25 @@ class LabConcreteController extends Controller
     {
         // $labconcrete = LabConcrete::where('mixingconcrete_id',  1)->get();
         // dump($labconcrete);
-        // $labconcretes = LabConcrete::all();
+        $labconcretes = LabConcrete::all();
         $mixingconcretes = MixingConcrete::all()->sortByDesc('created_at');
+        // $allMarke = MixingConcrete::select('marke')->distinct()->orderBy('marke')->get()->pluck('marke')->toArray();
+        // $mixingconcretes = MixingConcrete::orderBy('marke')->get();
+        // $allMarke = LabConcrete::select('pagaminti_kubeliai_g')->distinct()->orderBy('pagaminti_kubeliai_g')->get()->pluck('pagaminti_kubeliai_g')->toArray();
 
         $sorts = LabConcrete::getSorts();
         $sortBy =$request->query('sort', '');
         $perPageSelect = LabConcrete::getPerPageSelect();
-        $perPage = (int) $request->query('per_page', 15);
+        $perPage = (int) $request->query('per_page', 0);
+        // $mixingconcreteId = (int) $request->query('mixingconcrete_id', 0);
+        // $markeId = $request->query('marke', '');
 
         $labconcretes = LabConcrete::query();
         // $labconcretes = $labconcretes->where('delete', 0);
+
+        // if ($markeId !== '') {
+        //     $labconcretes = $labconcretes->where('marke', $markeId);
+        // }
 
         $labconcretes = match($sortBy) {
             'created_at_asc' => $labconcretes->orderBy('created_at'),
@@ -42,7 +51,7 @@ class LabConcreteController extends Controller
         if ($perPage > 0) {
             $labconcretes = $labconcretes->paginate($perPage)->withQueryString();
         } else {
-            $labconcretes = $labconcretes->get()->sortByDesc('created_at');
+            $labconcretes = $labconcretes->get();
             // $labconcretes = $labconcretes->get()->sortByDesc('created_at');
         }
         
@@ -53,6 +62,8 @@ class LabConcreteController extends Controller
             'sortBy' => $sortBy,
             'perPageSelect' => $perPageSelect,
             'perPage' => $perPage,
+            // 'markes' => $allMarke,
+            // 'markesId' => $markeId,
         ]);
     }
 

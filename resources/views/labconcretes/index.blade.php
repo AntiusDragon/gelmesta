@@ -379,7 +379,7 @@
             'aprasas' => '',
         ],
         [
-            'label' => 'Aprašas',
+            'label' => 'Komentaras',
             'type' => 'text',
             'name' => '',
             'aprasas' => '',
@@ -440,6 +440,29 @@
                                    </select>
                                 </div>
                             </div>
+                                
+                            {{-- <div class="col-2">
+                                <div class="form-group mb-3">
+                                   <label class="m-1">Markės</label>
+                                   <select class="form-select" name="marke">
+                                        <option value="0">Visi</option>
+                                        @foreach ($markes as $marke)
+                                        <option value="{{ $marke }}" @if($markeId = $marke) selected @endif>{{ $marke }}</option>
+                                       @endforeach
+                                   </select>
+                                </div>
+                            </div> --}}
+                            {{-- <div class="col-2">
+                                <div class="form-group mb-3">
+                                   <label class="m-1">Markės</label>
+                                   <select class="form-select" name="marke">
+                                        <option value="0">Visi</option>
+                                        @foreach ($markes as $marke)
+                                        <option value="{{ $marke }}" @if($markeId = $marke) selected @endif>{{ $marke }}</option>
+                                       @endforeach
+                                   </select>
+                                </div>
+                            </div> --}}
                                 
                             <div class="col-2">
                                 <div class="form-group mb-3">
@@ -606,7 +629,7 @@
                                     <td>{{ $labconcrete->mixingconcrete->created_at }}</td>
                                     <td>{{ $labconcrete->mixingconcrete->marke }}</td>
                                     <td>{{ $labconcrete->mixingconcrete->slankumo_klase }}</td>
-                                    <td>{{ $labconcrete->slankumas_mm }}</td>
+                                    <td>{{ $labconcrete->mixingconcrete->slankumas_mm }}</td>
                                     <td>{{ $labconcrete->mixingconcrete->salcio_priedai }}</td>
                                     <td>{{ $labconcrete->mixingconcrete->maisykle }}</td>
                                     <td>{{ $labconcrete->mixingconcrete->uzsakymo_nr }}</td>
@@ -635,7 +658,7 @@
                                     <td>{{ number_format($labconcrete->bandinio_mase_g / $bandinioTuris, 2) }}</td>
                                     <td>x</td>
                                     <td>{{ $fck }}</td>
-                                    <td>{{ $labconcrete->mixingconcrete->komentaras }}</td>
+                                    <td>{{ $labconcrete->komentaras }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

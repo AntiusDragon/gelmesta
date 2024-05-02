@@ -17,8 +17,8 @@ class MixingConcrete extends Model
         'user_edit_id',
         'marke',
         'slankumo_klase',
-        // 'slankumas_mm',
-        // 'itraukto_oro_kiekis',
+        'slankumas_mm',
+        'itraukto_oro_kiekis',
         'tipas',
         'salcio_priedai',
         'pagaminti_kubeliai_g',
@@ -29,7 +29,7 @@ class MixingConcrete extends Model
         'uzsakymo_raide',
         'uzsakovas',
         'komentaras',
-        // 'user_id',
+        'user_id',
         'created_at',
     ];
 

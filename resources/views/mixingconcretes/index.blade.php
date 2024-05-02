@@ -65,6 +65,12 @@
                 'aprasas' => 'Slankumo klasė',
             ],
             [
+                'label' => 'Slankumas mm',
+                'type' => 'text',
+                'name' => 'slankumas_mm',
+                'aprasas' => 'Slankumo klasė',
+            ],
+            [
                 'label' => 'Typas',
                 'type' => 'text',
                 'name' => 'tipas',

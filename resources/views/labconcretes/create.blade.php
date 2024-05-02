@@ -459,7 +459,7 @@
         //     'aprasas' => '',
         // ],
         [
-            'label' => 'Aprašas',
+            'label' => 'Komentaras',
             'type' => 'text',
             'name' => '',
             'aprasas' => '',
@@ -562,7 +562,7 @@
                                                         <td>{{ $mixingconcrete->created_at }}</td>
                                                         <td>{{ $mixingconcrete->marke }}</td>
                                                         <td>{{ $mixingconcrete->slankumo_klase }}</td>
-                                                        <td></td>
+                                                        <td>{{ $mixingconcrete->slankumas_mm }}</td>
                                                         <td>{{ $mixingconcrete->salcio_priedai }}</td>
                                                         <td>{{ $mixingconcrete->maisykle }}</td>
                                                         <td>{{ $mixingconcrete->uzsakymo_nr }}</td>
@@ -598,7 +598,7 @@
                                                             <td>{{ $mixingconcrete->created_at }}</td>
                                                             <td>{{ $mixingconcrete->marke }}</td>
                                                             <td>{{ $mixingconcrete->slankumo_klase }}</td>
-                                                            <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Slankumas, mm" name="slankumas_mm"></td>
+                                                            <td>{{ $mixingconcrete->slankumas_mm }}</td>
                                                             <td>{{ $mixingconcrete->salcio_priedai }}</td>
                                                             <td>{{ $mixingconcrete->maisykle }}</td>
                                                             <td>{{ $mixingconcrete->uzsakymo_nr }}</td>
@@ -607,7 +607,7 @@
                                                             <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Bandinio aukštis, mm" name="aukstis_mm"></td>
                                                             <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Bandinio masė, g" name="bandinio_mase_g"></td>
                                                             <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Ardančioji jėga, kN" name="ardancioji_jega_kn"></td>
-                                                            <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Aprašas" name="aprasas"></td>
+                                                            <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Aprašas" name="komentaras"></td>
                                                         </tr>
                                                         <tr>
                                                             <td colspan="34">

@@ -59,6 +59,12 @@
             'aprasas' => 'Slankumo klasė',
         ],
         [
+            'label' => 'Slankumas mm',
+            'type' => 'text',
+            'name' => 'slankumas_mm',
+            'aprasas' => 'Slankumo klasė',
+        ],
+        [
             'label' => 'Typas',
             'type' => 'text',
             'name' => 'tipas',
@@ -485,9 +491,10 @@
                                     <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="maisikles_recepto_id"></div>
                                     <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="user_maise_id"></div>
                                     <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="user_edit_id"></div>
-                                    <td class="form-group mb-3"><input type="text" class="form-control" value="{{ ucwords(old('marke')) }}" placeholder="Marke" name="marke"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="{{ old('marke') ? strtoupper(old('marke')) : '' }}" placeholder="Marke" name="marke"></td>
                                     <td class="form-group mb-3"><input type="text" class="form-control" value="{{ ucwords(old('slankumo_klase')) }}" placeholder="Slankumas" name="slankumo_klase"></td>
-                                    <td class="form-group mb-3"><input type="text" class="form-control" value="{{ str_replace('.', ',', old('tipas')) }}" placeholder="Typas" name="tipas"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="{{ ucwords(old('slankumas_mm')) }}" placeholder="Slankumas mm" name="slankumas_mm"></td>
+                                    <td class="form-group mb-3"><input type="text" class="form-control" value="{{ strtolower(old('tipas')) }}" placeholder="Typas" name="tipas"></td>
                                     <td class="form-group mb-3"><input type="text" class="form-control" value="{{ ucwords(old('salcio_priedai')) }}" placeholder="XF / F" name="salcio_priedai"></td>
                                     <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Pagaminti kubeliai &quot;G&quot; vnt." name="pagaminti_kubeliai_g"></td>
                                     <td class="form-group mb-3"><input type="text" class="form-control" value="" placeholder="Pagaminti kubeliai &quot;P&quot; vnt." name="pagaminti_kubeliai_p"></td>
