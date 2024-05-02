@@ -515,7 +515,7 @@
     
             <div class="col-md-12 mb-4 maisimo_duonbaze">
                 <div class="card" style="background-color: #fffd">
-                    <div class="card-header">Betono labaratojija</div>
+                    <div class="card-header">Betono laboratoriją</div>
                     <div class="card-body">
 
                         @forelse ($mixingconcretes as $mixingconcrete)
@@ -729,7 +729,9 @@
                                 @endfor
                                 @endif
                             @endif
-                        @endforeach
+                        @empty
+                        <div colspan="15">Pagamintų kubelių nėra</div>
+                        @endforelse
 
                     </div>
                 </div>

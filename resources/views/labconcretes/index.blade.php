@@ -410,7 +410,7 @@
     
         <div class="col-md-12 mb-4 maisimo_duonbaze">
             <div class="card" style="background-color: #fffd">
-                <div class="card-header">Betono labaratorija</div>
+                <div class="card-header">Betono laboratoriją</div>
 
                 <form action="{{route('labconcretes-index')}}">
                     <div class="container">
@@ -500,127 +500,127 @@
                                 $sigma35Masyvas = [];
                             @endphp
                             @forelse ($labconcretes as $index => $labconcrete)
-                            @php
-                                $bandinioMarke = $labconcrete->mixingconcrete->marke;
+                                @php
+                                    $bandinioMarke = $labconcrete->mixingconcrete->marke;
 
-                                $pagamintiKubeliai = ($labconcrete->pagaminti_kubeliai_g > 0) ?'Prie gaminio' :'Vandenije';
-                                $fck = substr($labconcrete->mixingconcrete->marke, -2);
-                                $fuc = (int)$fck;
-                                $bandinioPlotas = $labconcrete->plotis_mm * $labconcrete->ilgis_mm;
-                                $bandinioTuris = $bandinioPlotas * $labconcrete->aukstis_mm / 1000;
-                                $pavedimoKoficientas = ($labconcrete->plotis_mm < 125) ? 0.95 : 1;
-                                $bandinioStiprisGniuzdant = number_format($labconcrete->ardancioji_jega_kn / $bandinioPlotas * $pavedimoKoficientas * 1000, 2);
-                                
-                                $bandinioStiprioMasyvas[] = $bandinioStiprisGniuzdant;
-                                $bandinioMarkeMasyvas[] = $bandinioMarke;
-                                $vidutinisSerijosStiprisGiuzdant = 0;
-                                if ($labconcrete->plotis_mm > 125) {
-                                    $vidutinisSerijosStiprisGiuzdant = $bandinioStiprisGniuzdant;
-                                } elseif ($bandinioMarke == $bandinioMarkeMasyvas[$index - 1]) {
-                                    $vidutinisSerijosStiprisGiuzdant = ($index == 0) ? $bandinioStiprisGniuzdant : number_format(($bandinioStiprisGniuzdant + $bandinioStiprioMasyvas[$index - 1]) / 2, 2);
-                                } elseif ($labconcrete->plotis_mm < 125) {
-                                    $vidutinisSerijosStiprisGiuzdant = $bandinioStiprisGniuzdant;
-                                }
-                                $bandinioVssgMasyvas[] = $vidutinisSerijosStiprisGiuzdant;
+                                    $pagamintiKubeliai = ($labconcrete->pagaminti_kubeliai_g > 0) ?'Prie gaminio' :'Vandenije';
+                                    $fck = substr($labconcrete->mixingconcrete->marke, -2);
+                                    $fuc = (int)$fck;
+                                    $bandinioPlotas = $labconcrete->plotis_mm * $labconcrete->ilgis_mm;
+                                    $bandinioTuris = $bandinioPlotas * $labconcrete->aukstis_mm / 1000;
+                                    $pavedimoKoficientas = ($labconcrete->plotis_mm < 125) ? 0.95 : 1;
+                                    $bandinioStiprisGniuzdant = number_format($labconcrete->ardancioji_jega_kn / $bandinioPlotas * $pavedimoKoficientas * 1000, 2);
+                                    
+                                    $bandinioStiprioMasyvas[] = $bandinioStiprisGniuzdant;
+                                    $bandinioMarkeMasyvas[] = $bandinioMarke;
+                                    $vidutinisSerijosStiprisGiuzdant = 0;
+                                    if ($labconcrete->plotis_mm > 125) {
+                                        $vidutinisSerijosStiprisGiuzdant = $bandinioStiprisGniuzdant;
+                                    } elseif ($bandinioMarke == $bandinioMarkeMasyvas[$index - 1]) {
+                                        $vidutinisSerijosStiprisGiuzdant = ($index == 0) ? $bandinioStiprisGniuzdant : number_format(($bandinioStiprisGniuzdant + $bandinioStiprioMasyvas[$index - 1]) / 2, 2);
+                                    } elseif ($labconcrete->plotis_mm < 125) {
+                                        $vidutinisSerijosStiprisGiuzdant = $bandinioStiprisGniuzdant;
+                                    }
+                                    $bandinioVssgMasyvas[] = $vidutinisSerijosStiprisGiuzdant;
 
-                                // $vidutinisSerijosStiprisGiuzdant = ($labconcrete->plotis_mm < 125) ?($labconcrete->plotis_mm == $labconcrete->plotis_mm) ?1 :'' :number_format($bandinioStiprisGniuzdant, 2);
-                                $kriterijusV1 = ($fuc - 4);
-                                $paliginimas1 = ($vidutinisSerijosStiprisGiuzdant !== '') ?($vidutinisSerijosStiprisGiuzdant >= $kriterijusV1) ?'≥' :'<' :'';
-                                
-                                if (isset($bandinioStiprioMasyvas[$index - 2]) && $bandinioStiprioMasyvas[$index - 2] > 2) {
-                                    // if ($vidutinisSerijosStiprisGiuzdant > 0) {
-                                        $fcm3 = number_format(($bandinioStiprioMasyvas[$index - 2] + $bandinioStiprioMasyvas[$index - 1] + $vidutinisSerijosStiprisGiuzdant) / 3, 2);
+                                    // $vidutinisSerijosStiprisGiuzdant = ($labconcrete->plotis_mm < 125) ?($labconcrete->plotis_mm == $labconcrete->plotis_mm) ?1 :'' :number_format($bandinioStiprisGniuzdant, 2);
+                                    $kriterijusV1 = ($fuc - 4);
+                                    $paliginimas1 = ($vidutinisSerijosStiprisGiuzdant !== '') ?($vidutinisSerijosStiprisGiuzdant >= $kriterijusV1) ?'≥' :'<' :'';
+                                    
+                                    if (isset($bandinioStiprioMasyvas[$index - 2]) && $bandinioStiprioMasyvas[$index - 2] > 2) {
+                                        // if ($vidutinisSerijosStiprisGiuzdant > 0) {
+                                            $fcm3 = number_format(($bandinioStiprioMasyvas[$index - 2] + $bandinioStiprioMasyvas[$index - 1] + $vidutinisSerijosStiprisGiuzdant) / 3, 2);
+                                        // } else {
+                                        //     $fcm3 = 0;
+                                        // }
+                                    } else {
+                                        $fcm3 = 0;
+                                    }
+
+                                    $kriterijusV2 = ($fuc + 4);
+                                    $paliginimas2 = ($fcm3 !== '') ?($fcm3 >= $kriterijusV2) ?'≥' :'<' :'';
+                                    
+                                    // $s15
+                                    // if (isset($bandinioVssgMasyvas[$index - 4]) && $bandinioVssgMasyvas[$index - 4] > 4) {
+                                    //     $duomenys = number_format((array_sum(array_slice($bandinioVssgMasyvas, $index - 4, 5)) / 5) + $bandinioStiprisGniuzdant, 2);
+                                    //     $kolekcija = collect($duomenys);
+                                    //     $standartinis_nuokrypis = $kolekcija->stdDev();
+                                    //     $s15 = $standartinis_nuokrypis;
                                     // } else {
-                                    //     $fcm3 = 0;
+                                    //     $s15 = 0;
                                     // }
-                                } else {
-                                    $fcm3 = 0;
-                                }
 
-                                $kriterijusV2 = ($fuc + 4);
-                                $paliginimas2 = ($fcm3 !== '') ?($fcm3 >= $kriterijusV2) ?'≥' :'<' :'';
-                                
-                                // $s15
-                                // if (isset($bandinioVssgMasyvas[$index - 4]) && $bandinioVssgMasyvas[$index - 4] > 4) {
-                                //     $duomenys = number_format((array_sum(array_slice($bandinioVssgMasyvas, $index - 4, 5)) / 5) + $bandinioStiprisGniuzdant, 2);
-                                //     $kolekcija = collect($duomenys);
-                                //     $standartinis_nuokrypis = $kolekcija->stdDev();
-                                //     $s15 = $standartinis_nuokrypis;
-                                // } else {
-                                //     $s15 = 0;
-                                // }
-
-                                if (isset($bandinioVssgMasyvas[$index - 4]) && $bandinioVssgMasyvas[$index - 4] > 4) {
-                                    // Patikriname, ar yra bent 5 duomenys ir ar jų vidurkis nebus nulis
-                                    $duomenuMasyvas = array_slice($bandinioVssgMasyvas, $index - 4, 5);
-                                    if (!empty($duomenuMasyvas) && array_sum($duomenuMasyvas) > 0) {
-                                        $vidurkis = (array_sum($duomenuMasyvas) / 5) + $bandinioStiprisGniuzdant;
-                                        // Skaičiuojamas standartinis nuokrypis
-                                        $n = count($duomenuMasyvas);
-                                        $vidurkis = array_sum($duomenuMasyvas) / $n;
-                                        $suma_kvadratu = 0;
-                                        // Skaičiuojamas suma kvadratu skirtumas tarp kiekvieno duomenų elemento ir vidurkio
-                                        foreach($duomenuMasyvas as $x) {
-                                            $suma_kvadratu += pow(($x - $vidurkis), 2);
+                                    if (isset($bandinioVssgMasyvas[$index - 4]) && $bandinioVssgMasyvas[$index - 4] > 4) {
+                                        // Patikriname, ar yra bent 5 duomenys ir ar jų vidurkis nebus nulis
+                                        $duomenuMasyvas = array_slice($bandinioVssgMasyvas, $index - 4, 5);
+                                        if (!empty($duomenuMasyvas) && array_sum($duomenuMasyvas) > 0) {
+                                            $vidurkis = (array_sum($duomenuMasyvas) / 5) + $bandinioStiprisGniuzdant;
+                                            // Skaičiuojamas standartinis nuokrypis
+                                            $n = count($duomenuMasyvas);
+                                            $vidurkis = array_sum($duomenuMasyvas) / $n;
+                                            $suma_kvadratu = 0;
+                                            // Skaičiuojamas suma kvadratu skirtumas tarp kiekvieno duomenų elemento ir vidurkio
+                                            foreach($duomenuMasyvas as $x) {
+                                                $suma_kvadratu += pow(($x - $vidurkis), 2);
+                                            }
+                                            // Standartinis nuokrypis yra kvadratinė šaknis iš sumos dalijamos iš n-1
+                                            $standartinis_nuokrypis = sqrt($suma_kvadratu / ($n - 1));
+                                            $s15 = number_format($standartinis_nuokrypis, 2);
+                                        } else {
+                                            $s15 = 0;
                                         }
-                                        // Standartinis nuokrypis yra kvadratinė šaknis iš sumos dalijamos iš n-1
-                                        $standartinis_nuokrypis = sqrt($suma_kvadratu / ($n - 1));
-                                        $s15 = number_format($standartinis_nuokrypis, 2);
                                     } else {
                                         $s15 = 0;
                                     }
-                                } else {
-                                    $s15 = 0;
-                                }
 
-                                $sigma35 = 1;
-                                // $duomenys = [];
-                                // $duomenys = 0;
-                                // $sigmaM = 1;
-                                // $rezultatas35 = 0;
-                                // $duomenys = array($rezultatas35);
-                                // if (isset($bandinioVssgMasyvas[$index - 4]) && $bandinioVssgMasyvas[$index - 4] > 4) {
-                                //     $rezultatas35ElementuMasyvas = array_slice($bandinioVssgMasyvas, $index - 4, 5);
-                                //     $suma35 = 0;
-                                //     foreach ($rezultatas35ElementuMasyvas as $element35) {
-                                //         $suma35 += $element35;
-                                //         // $duomenys[] += $element35;
-                                //     }
-                                //     $rezultatas35 = number_format($suma35 / 5 + $bandinioStiprisGniuzdant, 2);
-                                // } else {
-                                //     $rezultatas35 = 0;
-                                //     // $duomenys[] += 0;
-                                // }
+                                    $sigma35 = 1;
+                                    // $duomenys = [];
+                                    // $duomenys = 0;
+                                    // $sigmaM = 1;
+                                    // $rezultatas35 = 0;
+                                    // $duomenys = array($rezultatas35);
+                                    // if (isset($bandinioVssgMasyvas[$index - 4]) && $bandinioVssgMasyvas[$index - 4] > 4) {
+                                    //     $rezultatas35ElementuMasyvas = array_slice($bandinioVssgMasyvas, $index - 4, 5);
+                                    //     $suma35 = 0;
+                                    //     foreach ($rezultatas35ElementuMasyvas as $element35) {
+                                    //         $suma35 += $element35;
+                                    //         // $duomenys[] += $element35;
+                                    //     }
+                                    //     $rezultatas35 = number_format($suma35 / 5 + $bandinioStiprisGniuzdant, 2);
+                                    // } else {
+                                    //     $rezultatas35 = 0;
+                                    //     // $duomenys[] += 0;
+                                    // }
 
-                                // if (isset($sigma35Masyvas[$index - 1]) && $sigma35Masyvas[$index - 1] > 1) {
-                                //     if ($s15 >= $sigmaM * 0.63 && $s15 <= $sigmaM * 1.37) {
-                                //         $sigma35 = $sigmaM;
-                                //     } else {
-                                //         $sigma35 = sqrt(array_sum($duomenys) / (count($duomenys) - 1));
-                                //     }
-                                // } else {
-                                //     $sigma35 = sqrt(array_sum($duomenys) / (count($duomenys) - 1));
-                                // }
+                                    // if (isset($sigma35Masyvas[$index - 1]) && $sigma35Masyvas[$index - 1] > 1) {
+                                    //     if ($s15 >= $sigmaM * 0.63 && $s15 <= $sigmaM * 1.37) {
+                                    //         $sigma35 = $sigmaM;
+                                    //     } else {
+                                    //         $sigma35 = sqrt(array_sum($duomenys) / (count($duomenys) - 1));
+                                    //     }
+                                    // } else {
+                                    //     $sigma35 = sqrt(array_sum($duomenys) / (count($duomenys) - 1));
+                                    // }
 
-                                // $sigma35Masyvas[] = $sigma35;
+                                    // $sigma35Masyvas[] = $sigma35;
 
 
-                                if (isset($bandinioStiprioMasyvas[$index - 4]) && $bandinioStiprioMasyvas[$index - 4] > 4) {
-                                    $fcm15ElementuMasyvas = array_slice($bandinioStiprioMasyvas, $index - 4, 5);
-                                    $sumaFcm15 = 0;
-                                    foreach ($fcm15ElementuMasyvas as $element) {
-                                        $sumaFcm15 += $element;
+                                    if (isset($bandinioStiprioMasyvas[$index - 4]) && $bandinioStiprioMasyvas[$index - 4] > 4) {
+                                        $fcm15ElementuMasyvas = array_slice($bandinioStiprioMasyvas, $index - 4, 5);
+                                        $sumaFcm15 = 0;
+                                        foreach ($fcm15ElementuMasyvas as $element) {
+                                            $sumaFcm15 += $element;
+                                        }
+                                        $fcm = number_format($sumaFcm15 / 5 + $vidutinisSerijosStiprisGiuzdant, 2);
+                                    } else {
+                                        $fcm = 0;
                                     }
-                                    $fcm = number_format($sumaFcm15 / 5 + $vidutinisSerijosStiprisGiuzdant, 2);
-                                } else {
-                                    $fcm = 0;
-                                }
 
-                                $sigma148 = ($fuc + 1.48 * $sigma35);
-                                $paliginimas3 = ($fcm !== '') ?($fcm >= $sigma148) ?'≥' :'<' :'';
-                                $vidKvadNuokripis036 = (0.36 * $sigma35);
-                                $vidKvadNuokripis137 = (1.37 * $sigma35);
-                            @endphp
+                                    $sigma148 = ($fuc + 1.48 * $sigma35);
+                                    $paliginimas3 = ($fcm !== '') ?($fcm >= $sigma148) ?'≥' :'<' :'';
+                                    $vidKvadNuokripis036 = (0.36 * $sigma35);
+                                    $vidKvadNuokripis137 = (1.37 * $sigma35);
+                                @endphp
                                 <tr>
                                     {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="{{ $mixingconcrete->id }}" placeholder="" name="mixing_concrete_id"></div> --}}
                                     {{-- <div class="form-group mb-3"><input type="hidden" class="form-control" value="0" placeholder="" name="delete"></div> --}}
@@ -660,7 +660,11 @@
                                     <td>{{ $fck }}</td>
                                     <td>{{ $labconcrete->komentaras }}</td>
                                 </tr>
-                            @endforeach
+                            @empty
+                            <tr>
+                                <td colspan="15">Suspaustų kubelių nėra</td>
+                            </tr>
+                            @endforelse
                         </tbody>
                     </table>
 
